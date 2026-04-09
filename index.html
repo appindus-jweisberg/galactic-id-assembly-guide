@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Star Wars Galactic ID — Booth Conversion Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg-dark:#0a0c10;--bg-card:#12151c;--bg-card-hover:#181c26;--accent-blue:#4fc3f7;--accent-red:#ef5350;--accent-amber:#ffca28;--accent-green:#66bb6a;--text-primary:#e8eaed;--text-secondary:#9aa0a6;--text-dim:#5f6368;--border:#2a2e38;--glow-blue:rgba(79,195,247,0.15);--glow-red:rgba(239,83,80,0.12)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg-dark);color:var(--text-primary);font-family:'Rajdhani',sans-serif;min-height:100vh;overflow-x:hidden}
+body::after{content:'';position:fixed;top:0;left:0;right:0;bottom:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.03) 2px,rgba(0,0,0,.03) 4px);pointer-events:none;z-index:9999}
+.header{background:linear-gradient(180deg,#0f1218,var(--bg-dark));border-bottom:1px solid var(--border);padding:24px 40px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px)}
+.header-left{display:flex;align-items:center;gap:20px}
+.logo-mark{width:48px;height:48px;border:2px solid var(--accent-blue);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Orbitron',sans-serif;font-weight:900;font-size:18px;color:var(--accent-blue);box-shadow:0 0 20px var(--glow-blue)}
+.header-title h1{font-family:'Orbitron',sans-serif;font-size:22px;font-weight:700;letter-spacing:3px;text-transform:uppercase}
+.header-title .subtitle{font-size:13px;color:var(--text-secondary);letter-spacing:1.5px;text-transform:uppercase;margin-top:2px}
+.progress-bar-container{display:flex;align-items:center;gap:16px}
+.progress-ring{width:56px;height:56px}
+.progress-ring circle{fill:none;stroke-width:4}
+.progress-ring .bg{stroke:var(--border)}
+.progress-ring .fg{stroke:var(--accent-green);stroke-linecap:round;transition:stroke-dashoffset .6s ease;filter:drop-shadow(0 0 6px rgba(102,187,106,.5))}
+.progress-text{font-family:'Orbitron',sans-serif;font-size:14px;color:var(--accent-green);text-align:right}
+.progress-label{font-size:11px;color:var(--text-secondary);text-transform:uppercase;letter-spacing:1px}
+.main{max-width:1400px;margin:0 auto;padding:32px 40px 100px}
+.phase-nav{display:flex;gap:8px;margin-bottom:32px;flex-wrap:wrap}
+.phase-btn{background:var(--bg-card);border:1px solid var(--border);color:var(--text-secondary);font-family:'Rajdhani',sans-serif;font-size:15px;font-weight:600;padding:10px 20px;border-radius:6px;cursor:pointer;transition:all .2s;letter-spacing:.5px;text-transform:uppercase;touch-action:manipulation}
+.phase-btn:hover{background:var(--bg-card-hover);color:var(--text-primary)}
+.phase-btn.active{background:var(--accent-blue);color:var(--bg-dark);border-color:var(--accent-blue);box-shadow:0 0 20px var(--glow-blue)}
+.phase-btn .count{display:inline-block;background:rgba(0,0,0,.2);border-radius:4px;padding:1px 6px;margin-left:6px;font-size:12px}
+.phase-btn.active .count{background:rgba(0,0,0,.3)}
+.phase-section{display:none}
+.phase-section.active{display:block;animation:fadeIn .3s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.phase-header{margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.phase-header h2{font-family:'Orbitron',sans-serif;font-size:18px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--accent-blue);margin-bottom:6px}
+.phase-header p{font-size:15px;color:var(--text-secondary);line-height:1.5}
+.step-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:24px;margin-bottom:12px;display:flex;gap:20px;align-items:flex-start;cursor:pointer;transition:all .2s;touch-action:manipulation;position:relative;overflow:hidden}
+.step-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--border);transition:background .2s}
+.step-card:hover{background:var(--bg-card-hover);border-color:#3a3e48}
+.step-card.completed{opacity:.7}
+.step-card.completed::before{background:var(--accent-green);box-shadow:0 0 10px rgba(102,187,106,.4)}
+.step-checkbox{width:36px;height:36px;min-width:36px;border:2px solid var(--border);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:20px;color:transparent;transition:all .2s;margin-top:2px}
+.step-card.completed .step-checkbox{background:var(--accent-green);border-color:var(--accent-green);color:var(--bg-dark);box-shadow:0 0 12px rgba(102,187,106,.3)}
+.step-number{font-family:'Orbitron',sans-serif;font-size:11px;color:var(--text-dim);letter-spacing:1px;margin-bottom:4px}
+.step-title{font-size:18px;font-weight:600;color:var(--text-primary);margin-bottom:6px;line-height:1.3}
+.step-card.completed .step-title{text-decoration:line-through;color:var(--text-secondary)}
+.step-detail{font-size:14px;color:var(--text-secondary);line-height:1.6}
+.step-detail strong{color:var(--accent-amber);font-weight:600}
+.step-tags{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap}
+.tag{font-size:11px;font-weight:600;padding:3px 10px;border-radius:4px;text-transform:uppercase;letter-spacing:.5px}
+.tag-tool{background:rgba(79,195,247,.12);color:var(--accent-blue);border:1px solid rgba(79,195,247,.2)}
+.tag-caution{background:rgba(239,83,80,.12);color:var(--accent-red);border:1px solid rgba(239,83,80,.2)}
+.tag-template{background:rgba(255,202,40,.12);color:var(--accent-amber);border:1px solid rgba(255,202,40,.2)}
+.tag-info{background:rgba(102,187,106,.12);color:var(--accent-green);border:1px solid rgba(102,187,106,.2)}
+.warning-box{background:var(--glow-red);border:1px solid rgba(239,83,80,.3);border-radius:8px;padding:16px 20px;margin-bottom:20px;display:flex;gap:12px;align-items:flex-start}
+.warning-box .icon{font-size:22px;min-width:28px;text-align:center}
+.warning-box .text{font-size:14px;color:var(--accent-red);line-height:1.5;font-weight:500}
+.info-box{background:var(--glow-blue);border:1px solid rgba(79,195,247,.25);border-radius:8px;padding:16px 20px;margin-bottom:20px;display:flex;gap:12px;align-items:flex-start}
+.info-box .icon{font-size:22px;min-width:28px;text-align:center}
+.info-box .text{font-size:14px;color:var(--accent-blue);line-height:1.5}
+.reset-btn{position:fixed;bottom:24px;right:40px;background:var(--bg-card);border:1px solid var(--accent-red);color:var(--accent-red);font-family:'Rajdhani',sans-serif;font-size:14px;font-weight:600;padding:12px 24px;border-radius:8px;cursor:pointer;text-transform:uppercase;letter-spacing:1px;transition:all .2s;touch-action:manipulation;z-index:50}
+.reset-btn:hover{background:var(--accent-red);color:#fff}
+.timestamp{position:fixed;bottom:28px;left:40px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-dim);z-index:50}
+.draft-watermark{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-30deg);font-family:'Orbitron',sans-serif;font-size:120px;font-weight:900;color:rgba(255,255,255,.015);pointer-events:none;z-index:0;letter-spacing:20px;white-space:nowrap}
+@media(min-width:1200px){.step-card{padding:28px 32px}.step-title{font-size:20px}.step-detail{font-size:15px}}
+
+  .img-pair { display: flex; gap: 12px; margin-top: 12px; flex-wrap: wrap; }
+  .img-pair .img-col { flex: 1; min-width: 200px; }
+  .img-pair .img-col img { width: 100%; border-radius: 6px; border: 1px solid var(--border); }
+  .img-pair .img-label {
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px;
+    text-align: center;
+  }
+  .img-pair .img-label.before { color: var(--accent-blue); }
+  .img-pair .img-label.after { color: var(--accent-green); }
+
+</style>
+</head>
+<body>
+<div class="draft-watermark">DRAFT</div>
+<div class="header">
+<div class="header-left">
+<div class="logo-mark">GID</div>
+<div class="header-title">
+<h1>Galactic ID Booth Conversion</h1>
+<div class="subtitle">Card Creator &rarr; Star Wars Galactic ID &nbsp;|&nbsp; Apple Industries Inc.</div>
+</div>
+</div>
+<div class="progress-bar-container">
+<div><div class="progress-text" id="progressPct">0%</div><div class="progress-label">Complete</div></div>
+<svg class="progress-ring" viewBox="0 0 60 60"><circle class="bg" cx="30" cy="30" r="26"/><circle class="fg" id="progressCircle" cx="30" cy="30" r="26" stroke-dasharray="163.36" stroke-dashoffset="163.36" transform="rotate(-90 30 30)"/></svg>
+</div>
+</div>
+<div class="main">
+<div class="phase-nav" id="phaseNav">
+<button class="phase-btn active" data-phase="prep">0. Prep<span class="count">5</span></button>
+<button class="phase-btn" data-phase="removal">1. Removals<span class="count">7</span></button>
+<button class="phase-btn" data-phase="vinyl">2. Surface Prep<span class="count">1</span></button>
+<button class="phase-btn" data-phase="cabinet">3. Cabinet Cuts<span class="count">11</span></button>
+<button class="phase-btn" data-phase="hardware">4. Hardware Install<span class="count">7</span></button>
+<button class="phase-btn" data-phase="panels">5. Panels &amp; Shells<span class="count">7</span></button>
+<button class="phase-btn" data-phase="electrical">6. Electrical<span class="count">8</span></button>
+<button class="phase-btn" data-phase="final">7. Final QC<span class="count">5</span></button>
+</div>
+
+<!-- PHASE 0 -->
+<div class="phase-section active" id="phase-prep">
+<div class="phase-header"><h2>Phase 0 — Preparation &amp; Staging</h2><p>Gather tools, verify kit contents, and prepare the Card Creator booth before making any modifications.</p></div>
+<div class="info-box"><div class="icon">&#x1F6C8;</div><div class="text">This guide converts an existing <strong>Card Creator photo booth</strong> into a <strong>Star Wars Galactic ID photo booth</strong> using the Galactic ID conversion kit. Contact: <strong>Jesse Weisberg</strong> (jesseweisberg@appleindustries.com) with any questions.</div></div>
+
+<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
+<div class="step-number">STEP 0.1</div>
+<div class="step-title">Verify Required Tools Are Staged</div>
+<div class="step-detail">
+Confirm the following tools and consumables are available at the workstation. <strong>All items below are required</strong> — the templates call out specific bit/hole sizes that must be matched exactly.<br><br>
+<strong>Power Tools:</strong><br>
+&bull; <strong>Drill / drill press</strong> with the following bit sizes:<br>
+&emsp;— <strong>.551" drill bit</strong> (antenna holes — per "Antenna Hole .551"" on roof template)<br>
+&emsp;— <strong>1" drill bit or hole saw</strong> (holo fan power — per "Holo Fan Power Hole 1"" on roof template)<br>
+&emsp;— <strong>3/4" drill bit or hole saw</strong> (side panel power injection — per "Power Injection 3/4"" on side panel template)<br>
+&emsp;— <strong>5/8" drill bit</strong> (door — per "5/8" Hole" on door template)<br>
+&emsp;— <strong>1/2"+ drill bit</strong> (pill light power injection — per "1/2"+ Power Injection Pill Light" on pill light middle template)<br>
+&emsp;— <strong>6-32 clearance drill bit</strong> (#27 or 9/64") — camera housing, instrument panel, and door template holes<br>
+&emsp;— <strong>8-32 clearance drill bit</strong> (#18 or 11/64") — side panel and door template holes<br>
+&emsp;— <strong>1/4"-20 clearance drill bit</strong> (17/64" or "F" letter bit) — pill light panel mounting holes<br>
+&emsp;— <strong>1/4"-20 rivet-nut pilot drill bit</strong> (3/8" or per rivet-nut manufacturer spec) — roof, long box, short box<br>
+&bull; <strong>Angle grinder</strong> with cut-off wheel (oval/rectangle cuts on instrument panel and door)<br>
+&bull; <strong>Reciprocating saw</strong> with metal blade (keyhole slots, rectangle slots, arrow lock slot)<br><br>
+<strong>Hand Tools &amp; Hardware Install Tools:</strong><br>
+&bull; <strong>1/4"-20 rivet-nut installation tool</strong><br>
+&bull; Screwdriver set (Phillips + flathead)<br>
+&bull; Tape measure &bull; Marker / scribe / center punch<br>
+&bull; Clamps (to hold acrylic templates against booth surfaces)<br>
+&bull; Metal file / deburring tool<br><br>
+<strong>Safety:</strong> Safety glasses &bull; Work gloves &bull; Ear protection &bull; Dust mask
+</div>
+<div class="step-tags">
+<span class="tag tag-tool">.551" Bit</span><span class="tag tag-tool">1" Hole Saw</span><span class="tag tag-tool">3/4" Bit</span><span class="tag tag-tool">5/8" Bit</span><span class="tag tag-tool">1/2" Bit</span><span class="tag tag-tool">9/64" (#27)</span><span class="tag tag-tool">11/64" (#18)</span><span class="tag tag-tool">17/64" (F)</span><span class="tag tag-tool">3/8" Pilot</span><span class="tag tag-tool">Rivet-Nut Tool</span><span class="tag tag-tool">Angle Grinder</span><span class="tag tag-tool">Recip Saw</span>
+</div></div></div>
+
+<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
+<div class="step-number">STEP 0.2</div>
+<div class="step-title">Unpack &amp; Inventory the Galactic ID Conversion Kit</div>
+<div class="step-detail">
+Unpack the kit and verify all components are present:<br>
+<strong>Instrument panel assembly</strong> (Wago lever connectors pre-wired) &bull; <strong>Side panel assembly</strong> (with 3/8" aluminum riser) &bull; <strong>Pill light panels (x2)</strong> — gray anodized aluminum, red acrylic pill lenses &bull; <strong>Chute border assembly</strong> (9x LED indicator bulbs) &bull; <strong>Short box / holo tower mount</strong> &bull; <strong>Camera housing</strong> &bull; <strong>Modem mounting plate</strong> &bull; <strong>Painted 3D-printed shells</strong> (Light Metallic + Dark Metallic 4A) &bull; <strong>Black acrylic ID card borders</strong> &bull; <strong>Black oxide thumbscrews</strong> &bull; <strong>Fasteners bag</strong> (1/4"-20 rivet-nuts, 6-32 screws, 8-32 screws, 1/4"-20 bolts) &bull; LED strips &amp; wiring (Phase 6)<br><br>
+<strong>Laser-cut acrylic templates (verify all present):</strong><br>
+1. <strong>Roof Template</strong> (red, large — P/N 55786)<br>
+2. <strong>Camera Housing &amp; Light Greeble Hole Template</strong> (black, half-moon — P/N 55786 Rev1 03.17.2026)<br>
+3. <strong>Speaker &amp; Instrument Panel Template</strong> (clear, large — P/N 55766)<br>
+4. <strong>Side Panel Drill Template</strong> (amber/brown, tall narrow)<br>
+5. <strong>Door Template</strong> (gray, with circular window cutout)<br>
+6. <strong>Pill Light Panel Drill Templates</strong> — Top (clear), Middle (red), Bottom (tinted) — P/N 55786<br>
+7. <strong>Long Box Mounting Template</strong> (cardboard strip) + <strong>Short Box Mounting Template</strong> (red strip)
+</div>
+<div class="step-tags"><span class="tag tag-info">Kit Contents</span><span class="tag tag-template">7+ Templates</span></div>
+</div></div>
+
+<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
+<div class="step-number">STEP 0.3</div>
+<div class="step-title">Power Down &amp; Open the Card Creator Booth</div>
+<div class="step-detail">Power off the booth completely and unplug from mains. Open all access panels. Remove the existing <strong>"PHOTOS" acrylic marquee sign</strong> — this will be replaced with the "Star Wars Galactic ID" marquee.</div>
+<div class="step-tags"><span class="tag tag-caution">Power Off First</span></div>
+</div></div>
+
+<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
+<div class="step-number">STEP 0.4</div>
+<div class="step-title">Remove Existing Modem Bracket</div>
+<div class="step-detail">The modem bracket needs to be relocated between the speakers. Remove it from its current location. The modem will be re-mounted using the new modem mounting plate in Phase 4.</div>
+<div class="step-tags"><span class="tag tag-info">Relocation</span></div>
+</div></div>
+
+
+</div>
+
+
+<!-- PHASE 1: COMPONENT REMOVAL -->
+<div class="phase-section" id="phase-removal">
+<div class="phase-header"><h2>Phase 1 — Component Removal</h2><p>Remove the following components from the stock Card Creator booth. <strong>Blue highlighted items</strong> in the "Before" reference images indicate what to remove. Store removed parts safely — some may be reinstalled or reused.</p></div>
+
+<div class="warning-box"><div class="icon">&#x26A0;</div><div class="text"><strong>Booth must be powered off and unplugged before any disassembly.</strong> Disconnect all cables before removing components. Label and bag all fasteners from each removal step separately.</div></div>
+
+<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
+<div class="step-number">STEP 1.1</div>
+<div class="step-title">Remove "PHOTOS" Marquee Sign</div>
+<div class="step-detail">Remove the <strong>"PHOTOS" acrylic marquee sign</strong> from the top front of the booth. This will be replaced with the "Star Wars Galactic ID" marquee. Remove all mounting screws and set aside.
+<div class="img-pair">
+<div class="img-col"><div class="img-label before">&#x25C9; Before (remove blue)</div><img src="images/removal/remove_marquee_before.jpg" alt="Before"></div>
+<div class="img-col"><div class="img-label after">&#x2713; After</div><img src="images/removal/remove_marquee_after.jpg" alt="After"></div>
+</div>
+</div>
+<div class="step-tags"><span class="tag tag-tool">Screwdriver</span><span class="tag tag-caution">Save Marquee Fasteners</span></div>
+</div></div>
+
+<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
+<div class="step-number">STEP 1.2</div>
+<div class="step-title">Remove Ceiling Panel</div>
+<div class="step-detail">Remove the <strong>ceiling panel</strong> by unscrewing its fasteners. This exposes the ceiling cavity needed for routing antenna cables and the holo fan power cord. Set the panel and screws aside — the panel will be reinstalled in Phase 4.
+<div class="img-pair">
+<div class="img-col"><div class="img-label before">&#x25C9; Before (remove blue)</div><img src="images/removal/remove_ceiling_panel_before.jpg" alt="Before"></div>
+<div class="img-col"><div class="img-label after">&#x2713; After</div><img src="images/removal/remove_ceiling_panel_after.jpg" alt="After"></div>
+</div>
+</div>
+<div class="step-tags"><span class="tag tag-tool">Screwdriver</span></div>
+</div></div>
+
+<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
+<div class="step-number">STEP 1.3</div>
+<div class="step-title">Remove Ceiling-Mounted Components</div>
+<div class="step-detail">With the ceiling panel removed, remove the <strong>ceiling-mounted components</strong> shown in blue: the roof panel access covers/hatches, the ventilation fan, and any ceiling-mounted brackets. This clears the roof surface for the Galactic ID roof template work.
+<div class="img-pair">
+<div class="img-col"><div class="img-label before">&#x25C9; Before (remove blue)</div><img src="images/removal/remove_ceiling_components_before.jpg" alt="Before"></div>
+<div class="img-col"><div class="img-label after">&#x2713; After</div><img src="images/removal/remove_ceiling_components_after.jpg" alt="After"></div>
+</div>
+</div>
+<div class="step-tags"><span class="tag tag-tool">Screwdriver</span><span class="tag tag-caution">Bag &amp; Label Hardware</span></div>
+</div></div>
+
+<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
+<div class="step-number">STEP 1.4</div>
+<div class="step-title">Remove Instrument Panel Area Components (Camera Housing &amp; Lock)</div>
+<div class="step-detail">Remove the existing <strong>camera housing</strong> and <strong>door lock mechanism</strong> from the front instrument panel area (shown in blue). These will be replaced with Galactic ID versions. Disconnect any cables before removal.
+<div class="img-pair">
+<div class="img-col"><div class="img-label before">&#x25C9; Before (remove blue)</div><img src="images/removal/Remove_for_instrument_panel_before.jpg" alt="Before"></div>
+<div class="img-col"><div class="img-label after">&#x2713; After</div><img src="images/removal/Remove_for_instrument_panel_after.jpg" alt="After"></div>
+</div>
+</div>
+<div class="step-tags"><span class="tag tag-tool">Screwdriver</span><span class="tag tag-caution">Disconnect Cables First</span></div>
+</div></div>
+
+<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
+<div class="step-number">STEP 1.5</div>
+<div class="step-title">Remove Side Card Display</div>
+<div class="step-detail">Remove the existing <strong>side card display panel</strong> and its mounting hardware from the side of the booth. This area will be modified with new holes/slots and the Galactic ID side panel assembly will be installed in its place.
+<div class="img-pair">
+<div class="img-col"><div class="img-label before">&#x25C9; Before (remove blue)</div><img src="images/removal/remove_card_display_before.jpg" alt="Before"></div>
+<div class="img-col"><div class="img-label after">&#x2713; After</div><img src="images/removal/remove_card_display_after.jpg" alt="After"></div>
+</div>
+</div>
+<div class="step-tags"><span class="tag tag-tool">Screwdriver</span></div>
+</div></div>
+
+<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
+<div class="step-number">STEP 1.6</div>
+<div class="step-title">Remove Printer Door Components</div>
+<div class="step-detail">Remove the <strong>"PRINTS HERE" ring surround</strong>, <strong>printer door lock</strong>, and any associated trim from the printer door area (shown in blue). These are replaced by Galactic ID door template modifications and pill light panel mounting.
+<div class="img-pair">
+<div class="img-col"><div class="img-label before">&#x25C9; Before (remove blue)</div><img src="images/removal/remove_printer_door_components_before.jpg" alt="Before"></div>
+<div class="img-col"><div class="img-label after">&#x2713; After</div><img src="images/removal/remove_printer_door_components_after.jpg" alt="After"></div>
+</div>
+</div>
+<div class="step-tags"><span class="tag tag-tool">Screwdriver</span><span class="tag tag-caution">Bag &amp; Label Hardware</span></div>
+</div></div>
+
+<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
+<div class="step-number">STEP 1.7</div>
+<div class="step-title">Remove Print Chute Assembly</div>
+<div class="step-detail">Remove the entire <strong>print chute assembly</strong> from the door area (shown in blue), including the chute housing, door hinges, and mounting bracket. This clears the area for Galactic ID door modifications and the new chute border LED assembly.
+<div class="img-pair">
+<div class="img-col"><div class="img-label before">&#x25C9; Before (remove blue)</div><img src="images/removal/print_chute_remove_before.jpg" alt="Before"></div>
+<div class="img-col"><div class="img-label after">&#x2713; After</div><img src="images/removal/print_chute_remove_after.jpg" alt="After"></div>
+</div>
+</div>
+<div class="step-tags"><span class="tag tag-tool">Screwdriver</span><span class="tag tag-caution">Bag &amp; Label Hardware</span></div>
+</div></div>
+</div>
+
+<!-- PHASE 2: SURFACE PREP -->
+<div class="phase-section" id="phase-vinyl">
+<div class="phase-header"><h2>Phase 2 — Surface Preparation</h2><p>With all stock components removed, prepare the bare booth surfaces before making any cuts.</p></div>
+
+<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
+<div class="step-number">STEP 2.1</div>
+<div class="step-title">Apply White Vinyl Backing to Door Interior &amp; Side Panel Area</div>
+<div class="step-detail"><strong>Critical for LED effect:</strong> Apply white vinyl (or white material) to: (1) the inside of the booth door behind where the pill light panels will mount, and (2) the booth side wall behind where the side panel will mount. This white surface bounces light back through the acrylic diffusion for the pill lights and side panel LEDs. Without this, the LED effect will be significantly diminished.</div>
+<div class="step-tags"><span class="tag tag-caution">Critical for LED Effect</span><span class="tag tag-info">White Vinyl</span></div>
+</div></div>
+</div>
+
+<!-- PHASE 3 (was 1) -->
+<div class="phase-section" id="phase-cabinet">
+<div class="phase-header"><h2>Phase 3 — Cabinet Modifications (Cuts &amp; Holes)</h2><p>Use the laser-cut acrylic templates to precisely locate all cuts, holes, and slots. Templates are labeled with specific hole sizes and registration points. Clamp templates securely before marking/drilling.</p></div>
+<div class="warning-box"><div class="icon">&#x26A0;</div><div class="text"><strong>Measure twice, cut once.</strong> These are permanent modifications. Always align template registration points ("Register to Screen", "Register to Speaker", "Register to Key Slot", "Register to Existing Screw Holes", "Register to Lock", "Register to Joint", "Register to Side") before marking any holes. Center-punch all drill locations.</div></div>
+
+<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
+<div class="step-number">STEP 3.1</div>
+<div class="step-title">Roof Template — Drill Antenna Holes (.551")</div>
+<div class="step-detail">Position the <strong>red roof template (P/N 55786)</strong> on the top of the booth. Locate all holes labeled <strong>"Antenna Hole .551""</strong> (4 positions — 2 original, 2 offset). Drill using a <strong>.551" drill bit</strong>. Center-punch first.</div>
+<div class="step-tags"><span class="tag tag-template">Roof (Red)</span><span class="tag tag-tool">.551" Bit</span></div>
+</div></div>
+
+<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
+<div class="step-number">STEP 3.2</div>
+<div class="step-title">Roof Template — Drill Holo Fan Power Hole (1")</div>
+<div class="step-detail">Same roof template. Locate <strong>"Holo Fan Power Hole 1""</strong>. Drill using a <strong>1" hole saw or drill bit</strong>. Routes the holo fan power extension cord from the short box into the electronics cabinet.</div>
+<div class="step-tags"><span class="tag tag-template">Roof (Red)</span><span class="tag tag-tool">1" Hole Saw</span></div>
+</div></div>
+
+<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
+<div class="step-number">STEP 3.3</div>
+<div class="step-title">Roof Template — Drill 1/4"-20 Rivet-Nut Pilot Holes &amp; Cut Slots</div>
+<div class="step-detail">Same roof template. Drill all <strong>"1/4-20 Rivet Nut"</strong> positions using a <strong>3/8" pilot bit</strong> (multiple positions). Cut the rectangular/oval <strong>slots</strong> — drill pilot holes at corners first, then connect with the <strong>reciprocating saw</strong>.</div>
+<div class="img-pair">
+<div class="img-col"><div class="img-label before">Roof — templates (red)</div><img src="images/cabinet-cuts/top_with_templates.jpg" alt="Template"></div>
+<div class="img-col"><div class="img-label after">Roof — after all cuts</div><img src="images/cabinet-cuts/top_after.jpg" alt="After"></div>
+</div>
+<div class="step-tags"><span class="tag tag-template">Roof (Red)</span><span class="tag tag-tool">3/8" Pilot</span><span class="tag tag-tool">Recip Saw</span></div>
+</div></div>
+
+<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
+<div class="step-number">STEP 3.4</div>
+<div class="step-title">Camera Housing Template — Drill 6-32 Clearance Holes</div>
+<div class="step-detail">Position the <strong>black half-moon camera housing template (P/N 55786 Rev1)</strong>. Align <strong>"Register to Screen"</strong> and <strong>"Register to Camera Cutout"</strong>. Drill all <strong>"6-32 Clearance"</strong> holes (5 positions) using <strong>#27 (9/64") drill bit</strong>.</div>
+<div class="img-pair">
+<div class="img-col"><div class="img-label before">Front face — templates (red)</div><img src="images/cabinet-cuts/front_with_templates.jpg" alt="Template"></div>
+<div class="img-col"><div class="img-label after">Front face — after cuts</div><img src="images/cabinet-cuts/front_after.jpg" alt="After"></div>
+</div>
+<div class="step-tags"><span class="tag tag-template">Camera Housing (Black)</span><span class="tag tag-tool">9/64" (#27)</span></div>
+</div></div>
+
+<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
+<div class="step-number">STEP 3.5</div>
+<div class="step-title">Speaker &amp; Instrument Panel Template — Drill 6-32 Holes &amp; Cut Oval Rectangle</div>
+<div class="step-detail">Position the <strong>clear speaker/instrument panel template (P/N 55766)</strong>. Align using <strong>"Register to Speaker"</strong> (x2) and <strong>"Register to Ring Light"</strong>. Drill all <strong>"6-32 Clearance"</strong> positions (10+) using <strong>#27 (9/64") bit</strong>. Cut the <strong>"Cut Oval Rectangle Hole"</strong> using <strong>angle grinder</strong> / reciprocating saw.</div>
+<div class="img-pair">
+<div class="img-col"><div class="img-label before">Instrument panel — templates (red)</div><img src="images/cabinet-cuts/instrument_panel_with_templates.jpg" alt="Template"></div>
+<div class="img-col"><div class="img-label after">Instrument panel — after cuts</div><img src="images/cabinet-cuts/instrument_panel_after.jpg" alt="After"></div>
+</div>
+<div class="step-tags"><span class="tag tag-template">Instrument Panel (Clear)</span><span class="tag tag-tool">9/64" (#27)</span><span class="tag tag-tool">Angle Grinder</span></div>
+</div></div>
+
+<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
+<div class="step-number">STEP 3.6</div>
+<div class="step-title">Side Panel Template — Drill 8-32 Holes, Power Injection &amp; Cut Keyhole Slots</div>
+<div class="step-detail">Position the <strong>amber side panel drill template</strong>. Align using <strong>"Register to Existing Screw Holes"</strong> (3 positions). Drill:<br>
+&bull; <strong>"8-32 Clearance Hole"</strong> (x2) — <strong>#18 (11/64") bit</strong><br>
+&bull; <strong>"Power Injection 3/4""</strong> (x2) — <strong>3/4" bit</strong><br>
+Cut <strong>"Cut Keyhole Slot"</strong> (x2) — <strong>reciprocating saw</strong> (drill pilot holes at each end first)</div>
+<div class="img-pair">
+<div class="img-col"><div class="img-label before">Side panel area — templates (red)</div><img src="images/cabinet-cuts/large_door_2_with_templates.jpg" alt="Template"></div>
+<div class="img-col"><div class="img-label after">Side panel area — after cuts</div><img src="images/cabinet-cuts/large_door_2_after.jpg" alt="After"></div>
+</div>
+<div class="step-tags"><span class="tag tag-template">Side Panel (Amber)</span><span class="tag tag-tool">11/64" (#18)</span><span class="tag tag-tool">3/4" Bit</span><span class="tag tag-tool">Recip Saw</span></div>
+</div></div>
+
+<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
+<div class="step-number">STEP 3.7</div>
+<div class="step-title">Door Template — Drill 8-32 &amp; 5/8" Holes, Cut Rectangle &amp; Arrow Lock Slots</div>
+<div class="step-detail">Position the <strong>gray door template</strong>. Align using <strong>"Register to Key Slot"</strong>. Drill/cut:<br>
+&bull; <strong>"8-32 Clearance"</strong> (x4) — <strong>#18 (11/64") bit</strong><br>
+&bull; <strong>"5/8" Hole"</strong> (x1) — <strong>5/8" drill bit</strong><br>
+&bull; <strong>"Cut out Rectangle Slot"</strong> — <strong>reciprocating saw</strong><br>
+&bull; <strong>"Cut Arrow Lock Slot"</strong> — <strong>reciprocating saw</strong></div>
+<div class="img-pair">
+<div class="img-col"><div class="img-label before">Door — templates (red)</div><img src="images/cabinet-cuts/large_door_1_with_templates.jpg" alt="Template"></div>
+<div class="img-col"><div class="img-label after">Door — after cuts</div><img src="images/cabinet-cuts/large_door_1_after.jpg" alt="After"></div>
+</div>
+<div class="step-tags"><span class="tag tag-template">Door (Gray)</span><span class="tag tag-tool">11/64" (#18)</span><span class="tag tag-tool">5/8" Bit</span><span class="tag tag-tool">Recip Saw</span></div>
+</div></div>
+
+<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
+<div class="step-number">STEP 3.8</div>
+<div class="step-title">Pill Light Panel Templates (x3) — Drill 1/4"-20 &amp; Power Injection Holes</div>
+<div class="step-detail">Three templates (Top/Middle/Bottom). Align each using <strong>"Register to Lock"</strong>:<br>
+&bull; <strong>Top (clear):</strong> <strong>"1/4"-20 Clearance"</strong> x2 — <strong>17/64" bit</strong><br>
+&bull; <strong>Middle (red):</strong> <strong>"1/4"-20 Clearance"</strong> x2 — <strong>17/64" bit</strong> + <strong>"1/2"+ Power Injection Pill Light"</strong> x2 — <strong>1/2" bit</strong><br>
+&bull; <strong>Bottom (tinted):</strong> <strong>"1/4"-20 Clearance"</strong> x2 — <strong>17/64" bit</strong></div>
+<div class="img-pair">
+<div class="img-col"><div class="img-label before">Bottom/door interior — templates (red)</div><img src="images/cabinet-cuts/bottom_with_templates.jpg" alt="Template"></div>
+<div class="img-col"><div class="img-label after">Bottom/door — after holes</div><img src="images/cabinet-cuts/bottom_after.jpg" alt="After"></div>
+</div>
+<div class="step-tags"><span class="tag tag-template">Pill Light (x3)</span><span class="tag tag-tool">17/64" (F)</span><span class="tag tag-tool">1/2" Bit</span></div>
+</div></div>
+
+<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
+<div class="step-number">STEP 3.9</div>
+<div class="step-title">Long Box Mounting Template — Drill 1/4"-20 Rivet-Nut Holes</div>
+<div class="step-detail">Position the <strong>cardboard long box template (P/N 55786)</strong> on the booth front, <strong>between the metal trim strips above the door</strong>. Drill <strong>"1/4-20 Rivet Nut"</strong> (x3) using <strong>3/8" pilot bit</strong>.</div>
+<div class="step-tags"><span class="tag tag-template">Long Box (Cardboard)</span><span class="tag tag-tool">3/8" Pilot</span></div>
+</div></div>
+
+<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
+<div class="step-number">STEP 3.10</div>
+<div class="step-title">Short Box Mounting Template — Drill 1/4"-20 Rivet-Nut Holes</div>
+<div class="step-detail">Position the <strong>red short box template</strong>. Align using <strong>"Register to Joint"</strong> and <strong>"Register to Side"</strong>. Drill <strong>"1/4-20 Rivet Nut"</strong> (x2) using <strong>3/8" pilot bit</strong>.</div>
+<div class="step-tags"><span class="tag tag-template">Short Box (Red)</span><span class="tag tag-tool">3/8" Pilot</span></div>
+</div></div>
+
+<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
+<div class="step-number">STEP 3.11</div>
+<div class="step-title">Deburr All Cuts &amp; Clean Metal Filings</div>
+<div class="step-detail">Deburr all cut edges. <strong>Thoroughly vacuum/clean all metal filings and debris</strong> from inside the booth, especially near electronics. Metal shavings cause shorts.</div>
+<div class="step-tags"><span class="tag tag-caution">Critical Cleanup</span></div>
+</div></div>
+</div>
+
+<!-- PHASE 2 -->
+<div class="phase-section" id="phase-hardware">
+<div class="phase-header"><h2>Phase 4 — Mounting Hardware Installation</h2><p>Install all rivet-nuts, mounting brackets, and structural hardware before attaching kit components.</p></div>
+
+<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
+<div class="step-number">STEP 4.1</div>
+<div class="step-title">Install All 1/4"-20 Rivet-Nuts</div>
+<div class="step-detail">Install <strong>1/4"-20 rivet-nuts</strong> into every pilot hole from Steps 3.3, 3.9, and 3.10 (roof, long box, short box). Verify each is seated flush.</div>
+<div class="step-tags"><span class="tag tag-tool">1/4"-20 Rivet-Nut Tool</span></div>
+</div></div>
+
+<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
+<div class="step-number">STEP 4.2</div>
+<div class="step-title">Install Side Panel 3/8" Aluminum Riser</div>
+<div class="step-detail">Bolt the <strong>3/8" aluminum riser</strong> to the booth side using the 8-32 holes from Step 3.6. This provides throw distance for LED diffusion. Verify flush.</div>
+<div class="step-tags"><span class="tag tag-info">Riser Panel</span></div>
+</div></div>
+
+<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
+<div class="step-number">STEP 4.3</div>
+<div class="step-title">Install Modem Mounting Plate (Between Speakers)</div>
+<div class="step-detail">Mount the <strong>modem plate</strong> between speakers using existing hardware — no new weld nuts needed. Verify modem <strong>Power</strong> and <strong>LAN</strong> ports accessible from below.</div>
+<div class="step-tags"><span class="tag tag-info">Uses Existing Hardware</span></div>
+</div></div>
+
+<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
+<div class="step-number">STEP 4.4</div>
+<div class="step-title">Mount Modem &amp; Route Antenna Cables</div>
+<div class="step-detail">Secure modem to plate. Install <strong>4 antennas</strong> (2 original + 2 offset through .551" holes). Route cables through ceiling cavity to modem. Reconnect LAN and power.</div>
+<div class="step-tags"><span class="tag tag-info">4 Antennas</span></div>
+</div></div>
+
+<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
+<div class="step-number">STEP 4.5</div>
+<div class="step-title">Install Camera Housing</div>
+<div class="step-detail">Mount camera housing using 6-32 holes from Step 3.4. <strong>Verify housing does not occlude camera lens</strong> — power on briefly to check if needed.</div>
+<div class="step-tags"><span class="tag tag-caution">Check Lens Clearance</span><span class="tag tag-info">6-32 Screws</span></div>
+</div></div>
+
+<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
+<div class="step-number">STEP 4.6</div>
+<div class="step-title">Install Short Box &amp; Long Box Assemblies</div>
+<div class="step-detail">Mount <strong>long box</strong> (1/4"-20 rivet-nuts, Step 3.9, between trim strips above door). Mount <strong>short box / holo tower</strong> (Step 3.10). Route <strong>10ft 90° holo fan power cord</strong> through 1" hole, through ceiling cavity, into electronics cabinet.</div>
+<div class="step-tags"><span class="tag tag-info">1/4"-20 Bolts</span></div>
+</div></div>
+
+<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
+<div class="step-number">STEP 4.7</div>
+<div class="step-title">Reinstall Ceiling Panel</div>
+<div class="step-detail">All cables routed (antennas + holo fan cord). Reinstall ceiling panel with 8 screws. Verify no cables pinched.</div>
+<div class="step-tags"><span class="tag tag-tool">Screwdriver</span></div>
+</div></div>
+</div>
+
+<!-- PHASE 3 -->
+<div class="phase-section" id="phase-panels">
+<div class="phase-header"><h2>Phase 5 — Panels, Shells &amp; Cosmetic Components</h2><p>Mount all exterior decorative panels and painted shell pieces.</p></div>
+
+<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
+<div class="step-number">STEP 5.1</div><div class="step-title">Mount Instrument Panel Assembly</div>
+<div class="step-detail">Attach instrument panel using 6-32 mounting points (Step 3.5). Acrylic tiles recessed under black cover plate. <strong>Wago solderless lever connectors</strong> pre-wired on back.</div>
+<div class="step-tags"><span class="tag tag-info">Wago Connectors</span><span class="tag tag-info">6-32</span></div>
+</div></div>
+
+<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
+<div class="step-number">STEP 5.2</div><div class="step-title">Mount Side Panel Assembly</div>
+<div class="step-detail">Attach side panel to aluminum riser using <strong>black oxide thumbscrews</strong>. Includes ID card slots with <strong>black acrylic borders</strong>, WS2811 addressable strip slot, and COB strip behind red pill lenses.</div>
+<div class="step-tags"><span class="tag tag-info">Black Thumbscrews</span></div>
+</div></div>
+
+<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
+<div class="step-number">STEP 5.3</div><div class="step-title">Mount Pill Light Panels (x2) to Door</div>
+<div class="step-detail">Attach both pill light panels using 1/4"-20 holes (Step 3.8). Route LED leads through 1/2"+ power injection holes. <strong>Confirm white backer in place</strong> (Phase 2). Each panel: 2x 5m COB strips (12W/m peak), facing backward.</div>
+<div class="step-tags"><span class="tag tag-caution">Confirm White Backer</span><span class="tag tag-info">1/4"-20 Bolts</span></div>
+</div></div>
+
+<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
+<div class="step-number">STEP 5.4</div><div class="step-title">Install Chute Border Indicator Bulbs</div>
+<div class="step-detail">Insert <strong>9x 12V LED indicator bulbs</strong> (0.02W each) into chute border holes.</div>
+<div class="step-tags"><span class="tag tag-info">9x Bulbs</span></div>
+</div></div>
+
+<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
+<div class="step-number">STEP 5.5</div><div class="step-title">Attach Painted 3D-Printed Shell Pieces</div>
+<div class="step-detail">Install all painted shells. Two finishes: <strong>Light Metallic</strong> and <strong>Dark Metallic (4A)</strong>. Follow part numbering for placement.</div>
+<div class="step-tags"><span class="tag tag-info">Light Metallic</span><span class="tag tag-info">Dark Metallic 4A</span></div>
+</div></div>
+
+<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
+<div class="step-number">STEP 5.6</div><div class="step-title">Install "Star Wars Galactic ID" Marquee Sign</div>
+<div class="step-detail">Replace removed "PHOTOS" marquee with the <strong>"Star Wars Galactic ID" acrylic marquee sign</strong>.</div>
+<div class="step-tags"><span class="tag tag-info">Marquee</span></div>
+</div></div>
+
+<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
+<div class="step-number">STEP 5.7</div><div class="step-title">Insert Sample ID Cards into Side Panel</div>
+<div class="step-detail">Place Star Wars Galactic ID sample cards into side panel display slots. Black acrylic borders hold cards in place.</div>
+<div class="step-tags"><span class="tag tag-info">Display Cards</span></div>
+</div></div>
+</div>
+
+<!-- PHASE 4 -->
+<div class="phase-section" id="phase-electrical">
+<div class="phase-header"><h2>Phase 6 — Electrical &amp; LED Wiring</h2><p>Connect all LED lighting. Kit adds ~192–280W LED load depending on strip wattage. PSU upgrade may be required.</p></div>
+<div class="warning-box"><div class="icon">&#x26A0;</div><div class="text"><strong>PSU Sizing:</strong> With 12W/m COB strips, total added LED load is ~<strong>280W+</strong>. Verify existing 12V PSU capacity and upgrade if needed (400W+ recommended). Contact Jesse Weisberg if unsure.</div></div>
+<div class="info-box"><div class="icon">&#x1F4A1;</div><div class="text"><strong>LED Load Breakdown:</strong> Pill Panels ~176W (11m COB x2) &bull; Side Panel ~14W &bull; Instrument Panel ~2W &bull; Chute Border ~0.18W &bull; <strong>Total: ~192W (8W/m) to ~280W (12W/m)</strong></div></div>
+
+<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
+<div class="step-number">STEP 6.1</div><div class="step-title">Upgrade 12V PSU (If Required)</div>
+<div class="step-detail">If existing PSU lacks headroom, swap for larger unit. COB strips are <strong>12V 6000K, up to 12W/m</strong>.</div>
+<div class="step-tags"><span class="tag tag-caution">Check PSU</span><span class="tag tag-info">12V 6000K</span></div>
+</div></div>
+
+<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
+<div class="step-number">STEP 6.2</div><div class="step-title">Wire Pill Light Panel LEDs (x4 strip leads)</div>
+<div class="step-detail">Connect 4 COB strip leads (2 per panel, through 1/2"+ power injection holes) to 12V PSU. Plain white COB — red lenses provide color.</div>
+<div class="step-tags"><span class="tag tag-info">12V COB White</span></div>
+</div></div>
+
+<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
+<div class="step-number">STEP 6.3</div><div class="step-title">Wire Side Panel COB Strip &amp; Power Injection</div>
+<div class="step-detail">Connect 24" 12V COB strip to PSU. Leads route through 3/4" power injection holes (Step 3.6).</div>
+<div class="step-tags"><span class="tag tag-info">12V COB White</span></div>
+</div></div>
+
+<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
+<div class="step-number">STEP 6.4</div><div class="step-title">Wire Side Panel WS2811 Addressable Strip</div>
+<div class="step-detail">Connect 24" WS2811 FCOB strip to 12V power <strong>and</strong> data line to microcontroller / smileOS controller.</div>
+<div class="step-tags"><span class="tag tag-info">WS2811 12V</span><span class="tag tag-caution">Data Line</span></div>
+</div></div>
+
+<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
+<div class="step-number">STEP 6.5</div><div class="step-title">Wire Instrument Panel LEDs</div>
+<div class="step-detail">Use pre-installed <strong>Wago lever connectors</strong>. 8x indicator bulbs + 8" COB strip. Insert stripped wires — no soldering.</div>
+<div class="step-tags"><span class="tag tag-info">Wago — No Soldering</span></div>
+</div></div>
+
+<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
+<div class="step-number">STEP 6.6</div><div class="step-title">Wire Chute Border Indicator Bulbs</div>
+<div class="step-detail">Connect 9x 12V LED indicator bulbs to PSU. Total: ~0.18W.</div>
+<div class="step-tags"><span class="tag tag-info">9x Bulbs</span></div>
+</div></div>
+
+<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
+<div class="step-number">STEP 6.7</div><div class="step-title">Connect Holo Fan Power</div>
+<div class="step-detail">Plug holo fan extension cord into power supply. Plug PSU into 120V outlet in electronics cabinet. Fan connects at top of short box.</div>
+<div class="step-tags"><span class="tag tag-info">120V AC</span></div>
+</div></div>
+
+<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
+<div class="step-number">STEP 6.8</div><div class="step-title">Verify All LED Connections — Power-On Test</div>
+<div class="step-detail">Power on 12V PSU. Verify all LEDs illuminate: pill panels, side panel, instrument panel, chute border. Power off when confirmed.</div>
+<div class="step-tags"><span class="tag tag-caution">Power Test</span></div>
+</div></div>
+</div>
+
+<!-- PHASE 5 -->
+<div class="phase-section" id="phase-final">
+<div class="phase-header"><h2>Phase 7 — Final Assembly &amp; QC</h2><p>Final checks, cable management, and quality control.</p></div>
+
+<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
+<div class="step-number">STEP 7.1</div><div class="step-title">Cable Management &amp; Wire Routing</div>
+<div class="step-detail">Tidy all wiring. Zip-tie loose cables. Verify nothing pinched by panels or door.</div>
+<div class="step-tags"><span class="tag tag-info">Zip Ties</span></div>
+</div></div>
+
+<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
+<div class="step-number">STEP 7.2</div><div class="step-title">Full Power-On &amp; LED Burn-In Test</div>
+<div class="step-detail">Power on entire booth. Run LEDs for <strong>15+ minutes</strong>. Check for dim/flicker/overheat. Verify holo fan spins up.</div>
+<div class="step-tags"><span class="tag tag-caution">15-Min Burn-In</span></div>
+</div></div>
+
+<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
+<div class="step-number">STEP 7.3</div><div class="step-title">Camera Function Check</div>
+<div class="step-detail">Take a test photo. Confirm no lens occlusion or vignetting from camera housing.</div>
+<div class="step-tags"><span class="tag tag-caution">Photo Test</span></div>
+</div></div>
+
+<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
+<div class="step-number">STEP 7.4</div><div class="step-title">Visual Inspection &amp; Fit Check</div>
+<div class="step-detail">Walk around booth: shells secure, no gaps, panels flush, thumbscrews tight, cards displayed, marquee mounted. Door opens/closes without interfering with pill panels.</div>
+<div class="step-tags"><span class="tag tag-info">QC Check</span></div>
+</div></div>
+
+<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
+<div class="step-number">STEP 7.5</div><div class="step-title">Sign Off — Booth Conversion Complete</div>
+<div class="step-detail">Record serial number and date. Take photos (front, side, back, interior). Mark as <strong>Galactic ID conversion complete</strong>.</div>
+<div class="step-tags"><span class="tag tag-info">Complete</span></div>
+</div></div>
+</div>
+
+</div>
+<button class="reset-btn" onclick="resetAll()">Reset All Steps</button>
+<div class="timestamp">DRAFT v1.3 — Apr 9, 2026 &nbsp;|&nbsp; Apple Industries Inc. &nbsp;|&nbsp; jesseweisberg@appleindustries.com</div>
+<script>
+const SK='gid-asm-v13';
+function gS(){try{return JSON.parse(localStorage.getItem(SK)||'{}')}catch(e){return{}}}
+function sS(s){try{localStorage.setItem(SK,JSON.stringify(s))}catch(e){}}
+
+document.querySelectorAll('.phase-btn').forEach(function(b){
+  b.addEventListener('click',function(){
+    document.querySelectorAll('.phase-btn').forEach(function(x){x.classList.remove('active')});
+    b.classList.add('active');
+    document.querySelectorAll('.phase-section').forEach(function(s){s.classList.remove('active')});
+    document.getElementById('phase-'+b.dataset.phase).classList.add('active');
+  });
+});
+
+function toggleStep(c){
+  c.classList.toggle('completed');
+  sP();
+  uP();
+}
+
+function sP(){
+  var s={};
+  document.querySelectorAll('.step-card').forEach(function(c,i){
+    s['s'+i]=c.classList.contains('completed');
+  });
+  sS(s);
+}
+
+function lP(){
+  var s=gS();
+  document.querySelectorAll('.step-card').forEach(function(c,i){
+    if(s['s'+i]) c.classList.add('completed');
+  });
+  uP();
+}
+
+function uP(){
+  var t=document.querySelectorAll('.step-card').length;
+  var d=document.querySelectorAll('.step-card.completed').length;
+  var p=Math.round(d/t*100);
+  document.getElementById('progressPct').textContent=p+'%';
+  document.getElementById('progressCircle').style.strokeDashoffset=163.36-163.36*p/100;
+  document.querySelectorAll('.phase-btn').forEach(function(b){
+    var ph=document.getElementById('phase-'+b.dataset.phase);
+    if(!ph) return;
+    var pt=ph.querySelectorAll('.step-card').length;
+    var pd=ph.querySelectorAll('.step-card.completed').length;
+    b.querySelector('.count').textContent=pd+'/'+pt;
+  });
+}
+
+function resetAll(){
+  if(confirm('Reset all steps to incomplete?')){
+    document.querySelectorAll('.step-card').forEach(function(c){c.classList.remove('completed')});
+    sP();
+    uP();
+  }
+}
+
+lP();
+</script>
+</body>
+</html>
