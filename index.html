@@ -76,6 +76,18 @@ body::after{content:'';position:fixed;top:0;left:0;right:0;bottom:0;background:r
   .img-pair .img-label.before { color: var(--accent-blue); }
   .img-pair .img-label.after { color: var(--accent-green); }
 
+  .template-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 12px; margin-top: 12px; }
+  .template-item { display: flex; gap: 10px; align-items: center; background: rgba(255,255,255,.03); border: 1px solid var(--border); border-radius: 8px; padding: 10px; }
+  .template-item img { width: 100px; height: 75px; object-fit: cover; border-radius: 4px; border: 1px solid var(--border); cursor: pointer; transition: transform .2s; }
+  .template-item img:hover { transform: scale(1.05); }
+  .template-item .tpl-info { flex: 1; font-size: 13px; line-height: 1.4; }
+  .template-item .tpl-num { font-family: 'Orbitron', sans-serif; font-size: 10px; color: var(--text-dim); }
+  .template-item .tpl-name { font-weight: 600; color: var(--accent-amber); }
+  .template-item .tpl-desc { font-size: 11px; color: var(--text-secondary); }
+  .tpl-lightbox { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,.85); z-index: 10000; align-items: center; justify-content: center; cursor: pointer; }
+  .tpl-lightbox.active { display: flex; }
+  .tpl-lightbox img { max-width: 90vw; max-height: 90vh; border-radius: 8px; }
+
 </style>
 </head>
 <body>
@@ -146,14 +158,19 @@ Confirm the following tools and consumables are available at the workstation. <s
 <div class="step-detail">
 Unpack the kit and verify all components are present:<br>
 <strong>Instrument panel assembly</strong> (Wago lever connectors pre-wired) &bull; <strong>Side panel assembly</strong> (with 3/8" aluminum riser) &bull; <strong>Pill light panels (x2)</strong> — gray anodized aluminum, red acrylic pill lenses &bull; <strong>Chute border assembly</strong> (9x LED indicator bulbs) &bull; <strong>Short box / holo tower mount</strong> &bull; <strong>Camera housing</strong> &bull; <strong>Modem mounting plate</strong> &bull; <strong>Painted 3D-printed shells</strong> (Light Metallic + Dark Metallic 4A) &bull; <strong>Black acrylic ID card borders</strong> &bull; <strong>Black oxide thumbscrews</strong> &bull; <strong>Fasteners bag</strong> (1/4"-20 rivet-nuts, 6-32 screws, 8-32 screws, 1/4"-20 bolts) &bull; LED strips &amp; wiring (Phase 6)<br><br>
-<strong>Laser-cut acrylic templates (verify all present):</strong><br>
-1. <strong>Roof Template</strong> (red, large — P/N 55786)<br>
-2. <strong>Camera Housing &amp; Light Greeble Hole Template</strong> (black, half-moon — P/N 55786 Rev1 03.17.2026)<br>
-3. <strong>Speaker &amp; Instrument Panel Template</strong> (clear, large — P/N 55766)<br>
-4. <strong>Side Panel Drill Template</strong> (amber/brown, tall narrow)<br>
-5. <strong>Door Template</strong> (gray, with circular window cutout)<br>
-6. <strong>Pill Light Panel Drill Templates</strong> — Top (clear), Middle (red), Bottom (tinted) — P/N 55786<br>
-7. <strong>Long Box Mounting Template</strong> (cardboard strip) + <strong>Short Box Mounting Template</strong> (red strip)
+<strong>Laser-cut acrylic templates (verify all present):</strong>
+<div class="template-grid">
+<div class="template-item"><img src="images/templates/IMG_8389.jpg" alt="Roof Template" onclick="openLightbox(this.src)"><div class="tpl-info"><div class="tpl-num">1</div><div class="tpl-name">Roof Template</div><div class="tpl-desc">Red, large — P/N 55786</div></div></div>
+<div class="template-item"><img src="images/templates/IMG_8396.jpg" alt="Camera Housing Template" onclick="openLightbox(this.src)"><div class="tpl-info"><div class="tpl-num">2</div><div class="tpl-name">Camera Housing &amp; Light Greeble Hole Template</div><div class="tpl-desc">Black, half-moon — P/N 55786 Rev1 03.17.2026</div></div></div>
+<div class="template-item"><img src="images/templates/IMG_8397.jpg" alt="Speaker & Instrument Panel Template" onclick="openLightbox(this.src)"><div class="tpl-info"><div class="tpl-num">3</div><div class="tpl-name">Speaker &amp; Instrument Panel Template</div><div class="tpl-desc">Clear, large — P/N 55766</div></div></div>
+<div class="template-item"><img src="images/templates/IMG_8399.jpg" alt="Side Panel Drill Template" onclick="openLightbox(this.src)"><div class="tpl-info"><div class="tpl-num">4</div><div class="tpl-name">Side Panel Drill Template</div><div class="tpl-desc">Amber/brown, tall narrow</div></div></div>
+<div class="template-item"><img src="images/templates/IMG_8400.jpg" alt="Door Template" onclick="openLightbox(this.src)"><div class="tpl-info"><div class="tpl-num">5</div><div class="tpl-name">Door Template</div><div class="tpl-desc">Gray, with circular window cutout</div></div></div>
+<div class="template-item"><img src="images/templates/IMG_8401.jpg" alt="Pill Light Top Template" onclick="openLightbox(this.src)"><div class="tpl-info"><div class="tpl-num">6a</div><div class="tpl-name">Pill Light Panel — Top</div><div class="tpl-desc">Clear — P/N 55786</div></div></div>
+<div class="template-item"><img src="images/templates/IMG_8403.jpg" alt="Pill Light Middle Template" onclick="openLightbox(this.src)"><div class="tpl-info"><div class="tpl-num">6b</div><div class="tpl-name">Pill Light Panel — Middle</div><div class="tpl-desc">Red — P/N 55786</div></div></div>
+<div class="template-item"><img src="images/templates/IMG_8402.jpg" alt="Pill Light Bottom Template" onclick="openLightbox(this.src)"><div class="tpl-info"><div class="tpl-num">6c</div><div class="tpl-name">Pill Light Panel — Bottom</div><div class="tpl-desc">Tinted — P/N 55786</div></div></div>
+<div class="template-item"><img src="images/templates/IMG_8404.jpg" alt="Long Box Mounting Template" onclick="openLightbox(this.src)"><div class="tpl-info"><div class="tpl-num">7a</div><div class="tpl-name">Long Box Mounting Template</div><div class="tpl-desc">Cardboard strip</div></div></div>
+<div class="template-item"><img src="images/templates/IMG_8405.jpg" alt="Short Box Mounting Template" onclick="openLightbox(this.src)"><div class="tpl-info"><div class="tpl-num">7b</div><div class="tpl-name">Short Box Mounting Template</div><div class="tpl-desc">Red strip</div></div></div>
+</div>
 </div>
 <div class="step-tags"><span class="tag tag-info">Kit Contents</span><span class="tag tag-template">7+ Templates</span></div>
 </div></div>
@@ -650,6 +667,11 @@ function resetAll(){
 }
 
 lP();
+
+// Template lightbox
+const lbEl=document.createElement('div');lbEl.className='tpl-lightbox';lbEl.innerHTML='<img>';document.body.appendChild(lbEl);
+lbEl.addEventListener('click',()=>lbEl.classList.remove('active'));
+function openLightbox(src){lbEl.querySelector('img').src=src;lbEl.classList.add('active');}
 </script>
 </body>
 </html>
