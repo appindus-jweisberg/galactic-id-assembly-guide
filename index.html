@@ -134,10 +134,9 @@ body::after{content:'';position:fixed;top:0;left:0;right:0;bottom:0;background:r
 <button class="phase-btn" data-phase="removal">1. Removals<span class="count">7</span></button>
 <button class="phase-btn" data-phase="cabinet">2. Cabinet Cuts<span class="count">6</span></button>
 <button class="phase-btn" data-phase="vinyl">3. Surface Prep<span class="count">1</span></button>
-<button class="phase-btn" data-phase="hardware">4. Hardware Install<span class="count">7</span></button>
-<button class="phase-btn" data-phase="panels">5. Panels &amp; Shells<span class="count">7</span></button>
-<button class="phase-btn" data-phase="electrical">6. Electrical<span class="count">8</span></button>
-<button class="phase-btn" data-phase="final">7. Final QC<span class="count">5</span></button>
+<button class="phase-btn" data-phase="hardware">4. Hardware Install<span class="count">12</span></button>
+<button class="phase-btn" data-phase="electrical">5. Electrical<span class="count">8</span></button>
+<button class="phase-btn" data-phase="final">6. Final QC<span class="count">5</span></button>
 </div>
 
 <!-- PHASE 0 -->
@@ -408,7 +407,7 @@ Cut <strong>"Cut Keyhole Slot"</strong> (x2) — <strong>reciprocating saw</stro
 
 <!-- PHASE 4 -->
 <div class="phase-section" id="phase-hardware">
-<div class="phase-header"><h2>Phase 4 — Mounting Hardware Installation</h2><p>Install all rivet-nuts, mounting brackets, and structural hardware before attaching kit components.</p></div>
+<div class="phase-header"><h2>Phase 4 — Hardware Installation</h2><p>Install all rivet-nuts, mounting brackets, structural hardware, panels, shells, and cosmetic components.</p></div>
 
 <div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
 <div class="step-number">STEP 4.1</div>
@@ -505,58 +504,51 @@ Cut <strong>"Cut Keyhole Slot"</strong> (x2) — <strong>reciprocating saw</stro
 <div class="step-detail">All cables routed (antennas + holo fan cord). Reinstall ceiling panel with 8 screws. Verify no cables pinched.</div>
 <div class="step-tags"><span class="tag tag-tool">Screwdriver</span></div>
 </div></div>
+
+<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
+<div class="step-number">STEP 4.8</div>
+<div class="step-title">Install Instrument &amp; Speaker Panel Assembly</div>
+<div class="step-detail">Mount the <strong>instrument panel</strong> using the 6-32 mounting points from Phase 2. The panel includes <strong>decorative speaker grilles</strong> (with perforated mesh), acrylic tiles recessed under a black cover plate, and <strong>Wago solderless lever connectors</strong> pre-wired on the back for tool-free LED hookup.
+<div class="img-pair" style="margin-top:8px;">
+<div class="img-col"><div class="img-label before">Front — Speaker Grilles &amp; Panel Installed</div><img src="images/hardware/instrument-panel/front.png" alt="Instrument and speaker panel front view with decorative grilles"></div>
+<div class="img-col"><div class="img-label before">Back — Wago Connectors &amp; Mounting</div><img src="images/hardware/instrument-panel/back.png" alt="Instrument panel back showing Wago connectors and mounting hardware"></div>
 </div>
-
-<!-- PHASE 3 -->
-<div class="phase-section" id="phase-panels">
-<div class="phase-header"><h2>Phase 5 — Panels, Shells &amp; Cosmetic Components</h2><p>Mount all exterior decorative panels and painted shell pieces.</p></div>
-
-<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
-<div class="step-number">STEP 5.1</div><div class="step-title">Mount Instrument Panel Assembly</div>
-<div class="step-detail">Attach instrument panel using 6-32 mounting points (Step 2.2). Acrylic tiles recessed under black cover plate. <strong>Wago solderless lever connectors</strong> pre-wired on back.</div>
-<div class="step-tags"><span class="tag tag-info">Wago Connectors</span><span class="tag tag-info">6-32</span></div>
+</div>
+<div class="step-tags"><span class="tag tag-info">Wago Connectors</span><span class="tag tag-info">6-32 Screws</span></div>
 </div></div>
 
 <div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
-<div class="step-number">STEP 5.2</div><div class="step-title">Mount Side Panel Assembly</div>
-<div class="step-detail">Attach side panel to aluminum riser using <strong>black oxide thumbscrews</strong>. Includes ID card slots with <strong>black acrylic borders</strong>, WS2811 addressable strip slot, and COB strip behind red pill lenses.</div>
-<div class="step-tags"><span class="tag tag-info">Black Thumbscrews</span></div>
-</div></div>
-
-<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
-<div class="step-number">STEP 5.3</div><div class="step-title">Mount Pill Light Panels (x2) to Door</div>
-<div class="step-detail">Attach both pill light panels using 1/4"-20 holes (Step 2.4). Route LED leads through 1/2"+ power injection holes. <strong>Confirm white backer in place</strong> (Phase 3). Each panel: 2x 5m COB strips (12W/m peak), facing backward.</div>
+<div class="step-number">STEP 4.9</div>
+<div class="step-title">Mount Pill Light Panels (x2) to Door</div>
+<div class="step-detail">Attach both pill light panels using 1/4"-20 holes (Phase 2). Route LED leads through 1/2"+ power injection holes. <strong>Confirm white backer in place</strong> (Phase 3). Each panel: 2x 5m COB strips (12W/m peak), facing backward.</div>
 <div class="step-tags"><span class="tag tag-caution">Confirm White Backer</span><span class="tag tag-info">1/4"-20 Bolts</span></div>
 </div></div>
 
 <div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
-<div class="step-number">STEP 5.4</div><div class="step-title">Install Chute Border Indicator Bulbs</div>
+<div class="step-number">STEP 4.10</div>
+<div class="step-title">Install Chute Border Indicator Bulbs</div>
 <div class="step-detail">Insert <strong>9x 12V LED indicator bulbs</strong> (0.02W each) into chute border holes.</div>
 <div class="step-tags"><span class="tag tag-info">9x Bulbs</span></div>
 </div></div>
 
 <div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
-<div class="step-number">STEP 5.5</div><div class="step-title">Attach Painted 3D-Printed Shell Pieces</div>
+<div class="step-number">STEP 4.11</div>
+<div class="step-title">Attach Painted 3D-Printed Shell Pieces</div>
 <div class="step-detail">Install all painted shells. Two finishes: <strong>Light Metallic</strong> and <strong>Dark Metallic (4A)</strong>. Follow part numbering for placement.</div>
 <div class="step-tags"><span class="tag tag-info">Light Metallic</span><span class="tag tag-info">Dark Metallic 4A</span></div>
 </div></div>
 
 <div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
-<div class="step-number">STEP 5.6</div><div class="step-title">Install "Star Wars Galactic ID" Marquee Sign</div>
+<div class="step-number">STEP 4.12</div>
+<div class="step-title">Install "Star Wars Galactic ID" Marquee Sign</div>
 <div class="step-detail">Replace removed "PHOTOS" marquee with the <strong>"Star Wars Galactic ID" acrylic marquee sign</strong>.</div>
 <div class="step-tags"><span class="tag tag-info">Marquee</span></div>
-</div></div>
-
-<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
-<div class="step-number">STEP 5.7</div><div class="step-title">Insert Sample ID Cards into Side Panel</div>
-<div class="step-detail">Place Star Wars Galactic ID sample cards into side panel display slots. Black acrylic borders hold cards in place.</div>
-<div class="step-tags"><span class="tag tag-info">Display Cards</span></div>
 </div></div>
 </div>
 
 <!-- PHASE 4 -->
 <div class="phase-section" id="phase-electrical">
-<div class="phase-header"><h2>Phase 6 — Electrical &amp; LED Wiring</h2><p>Connect all LED lighting. Kit adds ~192–280W LED load depending on strip wattage. PSU upgrade may be required.</p></div>
+<div class="phase-header"><h2>Phase 5 — Electrical &amp; LED Wiring</h2><p>Connect all LED lighting. Kit adds ~192–280W LED load depending on strip wattage. PSU upgrade may be required.</p></div>
 <div class="img-pair" style="margin-bottom:20px;">
 <div class="img-col"><div class="img-label before">Electrical Overview — Interior (Side 1)</div><img src="images/electrical/Side1ElectricalAddons.png" alt="Electrical wiring diagram — interior side showing LC2 controller, PSUs, LED routing, and M4 fork terminals"></div>
 <div class="img-col"><div class="img-label before">Electrical Overview — Front Face (Side 2)</div><img src="images/electrical/Side2ElectricalAddons.png" alt="Electrical wiring diagram — front face showing holo fan power, USB routing, antenna wires, and instrument panel"></div>
@@ -565,7 +557,7 @@ Cut <strong>"Cut Keyhole Slot"</strong> (x2) — <strong>reciprocating saw</stro
 <div class="info-box"><div class="icon">&#x1F4A1;</div><div class="text"><strong>LED Load Breakdown:</strong> Pill Panels ~176W (11m COB x2) &bull; Side Panel ~14W &bull; Instrument Panel ~2W &bull; Chute Border ~0.18W &bull; <strong>Total: ~192W (8W/m) to ~280W (12W/m)</strong></div></div>
 
 <div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
-<div class="step-number">STEP 6.1</div><div class="step-title">Install New 12V PSU</div>
+<div class="step-number">STEP 5.1</div><div class="step-title">Install New 12V PSU</div>
 <div class="step-detail">Install a new <strong>12V power supply</strong> in the position shown below — on the booth floor, adjacent to the existing electronics. This dedicated PSU powers all Galactic ID LED loads (pill panels, side panel, instrument panel, chute border). COB strips are <strong>12V 6000K, up to 12W/m</strong>.
 <div class="img-pair" style="margin-top:14px;">
 <div class="img-col"><div class="img-label before">PSU Install Position</div><img src="images/electrical/psu_position.png" alt="New PSU installation position on booth floor"></div>
@@ -579,19 +571,19 @@ Cut <strong>"Cut Keyhole Slot"</strong> (x2) — <strong>reciprocating saw</stro
 </div></div>
 
 <div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
-<div class="step-number">STEP 6.2</div><div class="step-title">Wire Pill Light Panel LEDs (x4 strip leads)</div>
+<div class="step-number">STEP 5.2</div><div class="step-title">Wire Pill Light Panel LEDs (x4 strip leads)</div>
 <div class="step-detail">Connect 4 COB strip leads (2 per panel, through 1/2"+ power injection holes) to 12V PSU. Plain white COB — red lenses provide color.</div>
 <div class="step-tags"><span class="tag tag-info">12V COB White</span></div>
 </div></div>
 
 <div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
-<div class="step-number">STEP 6.3</div><div class="step-title">Wire Side Panel COB Strip &amp; Power Injection</div>
+<div class="step-number">STEP 5.3</div><div class="step-title">Wire Side Panel COB Strip &amp; Power Injection</div>
 <div class="step-detail">Connect 24" 12V COB strip to PSU. Leads route through 3/4" power injection holes (Step 2.3).</div>
 <div class="step-tags"><span class="tag tag-info">12V COB White</span></div>
 </div></div>
 
 <div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
-<div class="step-number">STEP 6.4</div><div class="step-title">Wire Side Panel WS2811 Addressable Strip</div>
+<div class="step-number">STEP 5.4</div><div class="step-title">Wire Side Panel WS2811 Addressable Strip</div>
 <div class="step-detail">Connect 24" WS2811 FCOB strip to 12V power <strong>and</strong> data line to microcontroller / smileOS controller.
 <div class="img-pair" style="margin-top:12px;">
 <div class="img-col"><div class="img-label before">Reference — LED Controller Board</div><img src="images/electrical/led_controller_board_closeup.jpg" alt="LED controller board"></div>
@@ -602,7 +594,7 @@ Cut <strong>"Cut Keyhole Slot"</strong> (x2) — <strong>reciprocating saw</stro
 </div></div>
 
 <div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
-<div class="step-number">STEP 6.5</div><div class="step-title">Wire Instrument Panel LEDs</div>
+<div class="step-number">STEP 5.5</div><div class="step-title">Wire Instrument Panel LEDs</div>
 <div class="step-detail">Use pre-installed <strong>Wago lever connectors</strong>. 8x indicator bulbs + 8" COB strip. Insert stripped wires — no soldering.
 <div class="img-pair" style="margin-top:12px;">
 <div class="img-col"><div class="img-label before">Reference — Amplifier (Audio)</div><img src="images/electrical/amplifier_mounted.jpg" alt="Amplifier mounted"></div>
@@ -613,19 +605,19 @@ Cut <strong>"Cut Keyhole Slot"</strong> (x2) — <strong>reciprocating saw</stro
 </div></div>
 
 <div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
-<div class="step-number">STEP 6.6</div><div class="step-title">Wire Chute Border Indicator Bulbs</div>
+<div class="step-number">STEP 5.6</div><div class="step-title">Wire Chute Border Indicator Bulbs</div>
 <div class="step-detail">Connect 9x 12V LED indicator bulbs to PSU. Total: ~0.18W.</div>
 <div class="step-tags"><span class="tag tag-info">9x Bulbs</span></div>
 </div></div>
 
 <div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
-<div class="step-number">STEP 6.7</div><div class="step-title">Connect Holo Fan Power</div>
+<div class="step-number">STEP 5.7</div><div class="step-title">Connect Holo Fan Power</div>
 <div class="step-detail">Plug holo fan extension cord into power supply. Plug PSU into 120V outlet in electronics cabinet. Fan connects at top of short box.</div>
 <div class="step-tags"><span class="tag tag-info">120V AC</span></div>
 </div></div>
 
 <div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
-<div class="step-number">STEP 6.8</div><div class="step-title">Verify All LED Connections — Power-On Test</div>
+<div class="step-number">STEP 5.8</div><div class="step-title">Verify All LED Connections — Power-On Test</div>
 <div class="step-detail">Power on 12V PSU. Verify all LEDs illuminate: pill panels, side panel, instrument panel, chute border. Power off when confirmed.
 <div class="img-pair" style="margin-top:12px;">
 <div class="img-col"><div class="img-label before">Reference — Full Booth Interior</div><img src="images/reference/booth_interior_full.jpg" alt="Full booth interior"></div>
@@ -637,28 +629,28 @@ Cut <strong>"Cut Keyhole Slot"</strong> (x2) — <strong>reciprocating saw</stro
 
 <!-- PHASE 5 -->
 <div class="phase-section" id="phase-final">
-<div class="phase-header"><h2>Phase 7 — Final Assembly &amp; QC</h2><p>Final checks, cable management, and quality control.</p></div>
+<div class="phase-header"><h2>Phase 6 — Final Assembly &amp; QC</h2><p>Final checks, cable management, and quality control.</p></div>
 
 <div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
-<div class="step-number">STEP 7.1</div><div class="step-title">Cable Management &amp; Wire Routing</div>
+<div class="step-number">STEP 6.1</div><div class="step-title">Cable Management &amp; Wire Routing</div>
 <div class="step-detail">Tidy all wiring. Zip-tie loose cables. Verify nothing pinched by panels or door.</div>
 <div class="step-tags"><span class="tag tag-info">Zip Ties</span></div>
 </div></div>
 
 <div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
-<div class="step-number">STEP 7.2</div><div class="step-title">Full Power-On &amp; LED Burn-In Test</div>
+<div class="step-number">STEP 6.2</div><div class="step-title">Full Power-On &amp; LED Burn-In Test</div>
 <div class="step-detail">Power on entire booth. Run LEDs for <strong>15+ minutes</strong>. Check for dim/flicker/overheat. Verify holo fan spins up.</div>
 <div class="step-tags"><span class="tag tag-caution">15-Min Burn-In</span></div>
 </div></div>
 
 <div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
-<div class="step-number">STEP 7.3</div><div class="step-title">Camera Function Check</div>
+<div class="step-number">STEP 6.3</div><div class="step-title">Camera Function Check</div>
 <div class="step-detail">Take a test photo. Confirm no lens occlusion or vignetting from camera housing.</div>
 <div class="step-tags"><span class="tag tag-caution">Photo Test</span></div>
 </div></div>
 
 <div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
-<div class="step-number">STEP 7.4</div><div class="step-title">Visual Inspection &amp; Fit Check</div>
+<div class="step-number">STEP 6.4</div><div class="step-title">Visual Inspection &amp; Fit Check</div>
 <div class="step-detail">Walk around booth: shells secure, no gaps, panels flush, thumbscrews tight, cards displayed, marquee mounted. Door opens/closes without interfering with pill panels.
 <div class="img-pair" style="margin-top:12px;">
 <div class="img-col"><div class="img-label before">Reference — "PHOTOS" Marquee (pre-conversion)</div><img src="images/reference/photos_marquee.jpg" alt="Photos marquee"></div>
@@ -669,7 +661,7 @@ Cut <strong>"Cut Keyhole Slot"</strong> (x2) — <strong>reciprocating saw</stro
 </div></div>
 
 <div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
-<div class="step-number">STEP 7.5</div><div class="step-title">Sign Off — Booth Conversion Complete</div>
+<div class="step-number">STEP 6.5</div><div class="step-title">Sign Off — Booth Conversion Complete</div>
 <div class="step-detail">Record serial number and date. Take photos (front, side, back, interior). Mark as <strong>Galactic ID conversion complete</strong>.</div>
 <div class="step-tags"><span class="tag tag-info">Complete</span></div>
 </div></div>
