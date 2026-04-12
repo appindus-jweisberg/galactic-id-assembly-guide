@@ -10,7 +10,7 @@
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:var(--bg-dark);color:var(--text-primary);font-family:'Rajdhani',sans-serif;min-height:100vh;overflow-x:hidden}
 body::after{content:'';position:fixed;top:0;left:0;right:0;bottom:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.03) 2px,rgba(0,0,0,.03) 4px);pointer-events:none;z-index:9999}
-.header{background:linear-gradient(180deg,#0f1218,var(--bg-dark));border-bottom:1px solid var(--border);padding:24px 40px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;backdrop-filter:blur(12px)}
+.header{background:linear-gradient(180deg,#0f1218,var(--bg-dark));border-bottom:1px solid var(--border);padding:24px 40px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:44px;z-index:100;backdrop-filter:blur(12px)}
 .header-left{display:flex;align-items:center;gap:20px}
 .logo-mark{width:48px;height:48px;border:2px solid var(--accent-blue);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Orbitron',sans-serif;font-weight:900;font-size:18px;color:var(--accent-blue);box-shadow:0 0 20px var(--glow-blue)}
 .header-title h1{font-family:'Orbitron',sans-serif;font-size:22px;font-weight:700;letter-spacing:3px;text-transform:uppercase}
@@ -91,6 +91,29 @@ body::after{content:'';position:fixed;top:0;left:0;right:0;bottom:0;background:r
 </style>
 </head>
 <body>
+<!-- ===== SITE-WIDE NAV BAR ===== -->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+.gid-site-nav{position:fixed;top:0;left:0;right:0;height:44px;background:#08090d;display:flex;align-items:center;justify-content:space-between;padding:0 24px;z-index:10000;border-bottom:1px solid rgba(79,195,247,.15);box-shadow:0 1px 12px rgba(79,195,247,.08);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif}
+.gid-site-nav .gid-nav-logo{font-family:'Orbitron',sans-serif;font-weight:700;font-size:16px;color:#4fc3f7;letter-spacing:3px;text-decoration:none;text-shadow:0 0 10px rgba(79,195,247,.4)}
+.gid-site-nav .gid-nav-links{display:flex;gap:6px;align-items:center}
+.gid-site-nav .gid-nav-links a{color:#9aa0a6;font-size:12px;font-weight:500;text-decoration:none;padding:6px 12px;border-radius:4px;letter-spacing:.3px;transition:color .2s,background .2s;white-space:nowrap}
+.gid-site-nav .gid-nav-links a:hover{color:#e8eaed;background:rgba(255,255,255,.06)}
+.gid-site-nav .gid-nav-links a.gid-nav-active{color:#4fc3f7;background:rgba(79,195,247,.1)}
+</style>
+<nav class="gid-site-nav">
+  <a href="index.html" class="gid-nav-logo">GID</a>
+  <div class="gid-nav-links">
+    <a href="index.html" class="gid-nav-active">Assembly Guide</a>
+    <a href="timeline.html">Timeline</a>
+    <a href="electrical.html">Electrical Spec</a>
+    <a href="electrical-system.html">System Diagram</a>
+    <a href="electrical-illustrated.html">Illustrated Spec</a>
+    <a href="routing.html">Routing Map</a>
+  </div>
+</nav>
+<!-- ===== END NAV BAR ===== -->
+<div style="height:44px"></div>
 <div class="draft-watermark">DRAFT</div>
 <div class="header">
 <div class="header-left">
@@ -107,10 +130,10 @@ body::after{content:'';position:fixed;top:0;left:0;right:0;bottom:0;background:r
 </div>
 <div class="main">
 <div class="phase-nav" id="phaseNav">
-<button class="phase-btn active" data-phase="prep">0. Prep<span class="count">5</span></button>
+<button class="phase-btn active" data-phase="prep">0. Prep<span class="count">3</span></button>
 <button class="phase-btn" data-phase="removal">1. Removals<span class="count">7</span></button>
-<button class="phase-btn" data-phase="vinyl">2. Surface Prep<span class="count">1</span></button>
-<button class="phase-btn" data-phase="cabinet">3. Cabinet Cuts<span class="count">11</span></button>
+<button class="phase-btn" data-phase="cabinet">2. Cabinet Cuts<span class="count">6</span></button>
+<button class="phase-btn" data-phase="vinyl">3. Surface Prep<span class="count">1</span></button>
 <button class="phase-btn" data-phase="hardware">4. Hardware Install<span class="count">7</span></button>
 <button class="phase-btn" data-phase="panels">5. Panels &amp; Shells<span class="count">7</span></button>
 <button class="phase-btn" data-phase="electrical">6. Electrical<span class="count">8</span></button>
@@ -164,7 +187,7 @@ Unpack the kit and verify all components are present:<br>
 <div class="template-item"><img src="images/templates/IMG_8396.jpg" alt="Camera Housing Template" onclick="openLightbox(this.src)"><div class="tpl-info"><div class="tpl-num">2</div><div class="tpl-name">Camera Housing &amp; Light Greeble Hole Template</div><div class="tpl-desc">Black, half-moon — P/N 55786 Rev1 03.17.2026</div></div></div>
 <div class="template-item"><img src="images/templates/IMG_8397.jpg" alt="Speaker & Instrument Panel Template" onclick="openLightbox(this.src)"><div class="tpl-info"><div class="tpl-num">3</div><div class="tpl-name">Speaker &amp; Instrument Panel Template</div><div class="tpl-desc">Clear, large — P/N 55766</div></div></div>
 <div class="template-item"><img src="images/templates/IMG_8399.jpg" alt="Side Panel Drill Template" onclick="openLightbox(this.src)"><div class="tpl-info"><div class="tpl-num">4</div><div class="tpl-name">Side Panel Drill Template</div><div class="tpl-desc">Amber/brown, tall narrow</div></div></div>
-<div class="template-item"><img src="images/templates/IMG_8400.jpg" alt="Door Template" onclick="openLightbox(this.src)"><div class="tpl-info"><div class="tpl-num">5</div><div class="tpl-name">Door Template</div><div class="tpl-desc">Gray, with circular window cutout</div></div></div>
+<div class="template-item"><img src="images/templates/IMG_8400.jpg" alt="Print Chute Door Template" onclick="openLightbox(this.src)"><div class="tpl-info"><div class="tpl-num">5</div><div class="tpl-name">Print Chute Door Template</div><div class="tpl-desc">Gray, with circular window cutout</div></div></div>
 <div class="template-item"><img src="images/templates/IMG_8401.jpg" alt="Pill Light Top Template" onclick="openLightbox(this.src)"><div class="tpl-info"><div class="tpl-num">6a</div><div class="tpl-name">Pill Light Panel — Top</div><div class="tpl-desc">Clear — P/N 55786</div></div></div>
 <div class="template-item"><img src="images/templates/IMG_8403.jpg" alt="Pill Light Middle Template" onclick="openLightbox(this.src)"><div class="tpl-info"><div class="tpl-num">6b</div><div class="tpl-name">Pill Light Panel — Middle</div><div class="tpl-desc">Red — P/N 55786</div></div></div>
 <div class="template-item"><img src="images/templates/IMG_8402.jpg" alt="Pill Light Bottom Template" onclick="openLightbox(this.src)"><div class="tpl-info"><div class="tpl-num">6c</div><div class="tpl-name">Pill Light Panel — Bottom</div><div class="tpl-desc">Tinted — P/N 55786</div></div></div>
@@ -180,13 +203,6 @@ Unpack the kit and verify all components are present:<br>
 <div class="step-title">Power Down &amp; Open the Card Creator Booth</div>
 <div class="step-detail">Power off the booth completely and unplug from mains. Open all access panels. Remove the existing <strong>"PHOTOS" acrylic marquee sign</strong> — this will be replaced with the "Star Wars Galactic ID" marquee.</div>
 <div class="step-tags"><span class="tag tag-caution">Power Off First</span></div>
-</div></div>
-
-<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
-<div class="step-number">STEP 0.4</div>
-<div class="step-title">Remove Existing Modem Bracket</div>
-<div class="step-detail">The modem bracket needs to be relocated between the speakers. Remove it from its current location. The modem will be re-mounted using the new modem mounting plate in Phase 4.</div>
-<div class="step-tags"><span class="tag tag-info">Relocation</span></div>
 </div></div>
 
 
@@ -237,8 +253,8 @@ Unpack the kit and verify all components are present:<br>
 
 <div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
 <div class="step-number">STEP 1.4</div>
-<div class="step-title">Remove Instrument Panel Area Components (Camera Housing &amp; Lock)</div>
-<div class="step-detail">Remove the existing <strong>camera housing</strong> and <strong>door lock mechanism</strong> from the front instrument panel area (shown in blue). These will be replaced with Galactic ID versions. Disconnect any cables before removal.
+<div class="step-title">Remove Instrument Panel Area Components (Camera Housing, Bulb &amp; Modem Bracket)</div>
+<div class="step-detail">Remove the existing <strong>camera housing</strong>, <strong>camera bulb</strong>, and <strong>modem bracket</strong> from the front instrument panel area (shown in blue). These will be replaced with Galactic ID versions. Disconnect any cables before removal.
 <div class="img-pair">
 <div class="img-col"><div class="img-label before">&#x25C9; Before (remove blue)</div><img src="images/removal/Remove_for_instrument_panel_before.jpg" alt="Before"></div>
 <div class="img-col"><div class="img-label after">&#x2713; After</div><img src="images/removal/Remove_for_instrument_panel_after.jpg" alt="After"></div>
@@ -284,12 +300,100 @@ Unpack the kit and verify all components are present:<br>
 </div></div>
 </div>
 
-<!-- PHASE 2: SURFACE PREP -->
-<div class="phase-section" id="phase-vinyl">
-<div class="phase-header"><h2>Phase 2 — Surface Preparation</h2><p>With all stock components removed, prepare the bare booth surfaces before making any cuts.</p></div>
+<!-- PHASE 2: CABINET CUTS -->
+<div class="phase-section" id="phase-cabinet">
+<div class="phase-header"><h2>Phase 2 — Cabinet Modifications (Cuts &amp; Holes)</h2><p>Use the laser-cut acrylic templates to precisely locate all cuts, holes, and slots. Templates are labeled with specific hole sizes and registration points. Clamp templates securely before marking/drilling.</p></div>
+<div class="warning-box"><div class="icon">&#x26A0;</div><div class="text"><strong>Measure twice, cut once.</strong> These are permanent modifications. Always align template registration points ("Register to Screen", "Register to Speaker", "Register to Key Slot", "Register to Existing Screw Holes", "Register to Lock", "Register to Joint", "Register to Side") before marking any holes. Center-punch all drill locations.</div></div>
 
 <div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
 <div class="step-number">STEP 2.1</div>
+<div class="step-title">Roof Template — Antenna Holes, Holo Fan Hole, Rivet-Nut Pilots &amp; Slots</div>
+<div class="step-detail">Position the <strong>red roof template (P/N 55786)</strong> on the top of the booth.<br><br>
+<strong>Antenna Holes:</strong> Locate all holes labeled <strong>"Antenna Hole .551""</strong> (4 positions — 2 original, 2 offset). Drill using a <strong>.551" drill bit</strong>. Center-punch first.<br><br>
+<strong>Holo Fan Power Hole:</strong> Locate <strong>"Holo Fan Power Hole 1""</strong>. Drill using a <strong>1" hole saw or drill bit</strong>. Routes the holo fan power extension cord from the short box into the electronics cabinet.<br><br>
+<strong>Rivet-Nut Pilots &amp; Slots:</strong> Drill all <strong>"1/4-20 Rivet Nut"</strong> positions using a <strong>3/8" pilot bit</strong> (multiple positions). Cut the rectangular/oval <strong>slots</strong> — drill pilot holes at corners first, then connect with the <strong>reciprocating saw</strong>.</div>
+<div class="img-pair">
+<div class="img-col"><div class="img-label before">Roof — templates (red)</div><img src="images/cabinet-cuts/top_with_templates.jpg" alt="Template"></div>
+<div class="img-col"><div class="img-label after">Roof — after all cuts</div><img src="images/cabinet-cuts/top_after.jpg" alt="After"></div>
+</div>
+<div class="step-tags"><span class="tag tag-template">Roof (Red)</span><span class="tag tag-tool">.551" Bit</span><span class="tag tag-tool">1" Hole Saw</span><span class="tag tag-tool">3/8" Pilot</span><span class="tag tag-tool">Recip Saw</span></div>
+</div></div>
+
+<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
+<div class="step-number">STEP 2.2</div>
+<div class="step-title">Camera Housing &amp; Instrument Panel Templates — Drill 6-32 Holes &amp; Cut Oval Rectangle</div>
+<div class="step-detail"><strong>Camera Housing:</strong> Position the <strong>black half-moon camera housing template (P/N 55786 Rev1)</strong>. Align <strong>"Register to Screen"</strong> and <strong>"Register to Camera Cutout"</strong>. Drill all <strong>"6-32 Clearance"</strong> holes (5 positions) using <strong>#27 (9/64") drill bit</strong>.<br><br>
+<strong>Instrument Panel:</strong> Position the <strong>clear speaker/instrument panel template (P/N 55766)</strong>. Align using <strong>"Register to Speaker"</strong> (x2) and <strong>"Register to Ring Light"</strong>. Drill all <strong>"6-32 Clearance"</strong> positions (10+) using <strong>#27 (9/64") bit</strong>. Cut the <strong>"Cut Oval Rectangle Hole"</strong> using <strong>angle grinder</strong> / reciprocating saw.</div>
+<div class="img-pair">
+<div class="img-col"><div class="img-label before">Instrument panel — templates (red)</div><img src="images/cabinet-cuts/instrument_panel_with_templates.jpg" alt="Template"></div>
+<div class="img-col"><div class="img-label after">Instrument panel — after cuts</div><img src="images/cabinet-cuts/instrument_panel_after.jpg" alt="After"></div>
+</div>
+<div class="step-tags"><span class="tag tag-template">Camera Housing (Black)</span><span class="tag tag-template">Instrument Panel (Clear)</span><span class="tag tag-tool">9/64" (#27)</span><span class="tag tag-tool">Angle Grinder</span></div>
+</div></div>
+
+<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
+<div class="step-number">STEP 2.3</div>
+<div class="step-title">Side Panel &amp; Print Chute Door Templates — Drill Holes, Power Injection &amp; Cut Slots</div>
+<div class="step-detail"><strong>Side Panel:</strong> Position the <strong>amber side panel drill template</strong>. Align using <strong>"Register to Existing Screw Holes"</strong> (3 positions). Drill:<br>
+&bull; <strong>"8-32 Clearance Hole"</strong> (x2) — <strong>#18 (11/64") bit</strong><br>
+&bull; <strong>"Power Injection 3/4""</strong> (x2) — <strong>3/4" bit</strong><br>
+Cut <strong>"Cut Keyhole Slot"</strong> (x2) — <strong>reciprocating saw</strong> (drill pilot holes at each end first)<br><br>
+<strong>Print Chute Door:</strong> Position the <strong>gray print chute door template</strong>. Align using <strong>"Register to Key Slot"</strong>. Drill/cut:<br>
+&bull; <strong>"8-32 Clearance"</strong> (x4) — <strong>#18 (11/64") bit</strong><br>
+&bull; <strong>"5/8" Hole"</strong> (x1) — <strong>5/8" drill bit</strong><br>
+&bull; <strong>"Cut out Rectangle Slot"</strong> — <strong>reciprocating saw</strong><br>
+&bull; <strong>"Cut Arrow Lock Slot"</strong> — <strong>reciprocating saw</strong></div>
+<div class="img-pair">
+<div class="img-col"><div class="img-label before">Side Panel &amp; Print Chute Door — templates</div><img src="images/cabinet-cuts/front_with_templates.jpg" alt="Template"></div>
+<div class="img-col"><div class="img-label after">Side Panel &amp; Print Chute Door — after cuts</div><img src="images/cabinet-cuts/front_after.jpg" alt="After"></div>
+</div>
+<div class="step-tags"><span class="tag tag-template">Side Panel (Amber)</span><span class="tag tag-template">Print Chute Door (Gray)</span><span class="tag tag-tool">11/64" (#18)</span><span class="tag tag-tool">3/4" Bit</span><span class="tag tag-tool">5/8" Bit</span><span class="tag tag-tool">Recip Saw</span></div>
+</div></div>
+
+<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
+<div class="step-number">STEP 2.4</div>
+<div class="step-title">Pill Light Panel &amp; Long Box Templates — Drill Mounting Holes &amp; Rivet-Nut Positions</div>
+<div class="step-detail"><strong>Pill Light Panels:</strong> Three templates (Top/Middle/Bottom). Align each using <strong>"Register to Lock"</strong>:<br>
+&bull; <strong>Top (clear):</strong> <strong>"1/4"-20 Clearance"</strong> x2 — <strong>17/64" bit</strong><br>
+&bull; <strong>Middle (red):</strong> <strong>"1/4"-20 Clearance"</strong> x2 — <strong>17/64" bit</strong> + <strong>"1/2"+ Power Injection Pill Light"</strong> x2 — <strong>1/2" bit</strong><br>
+&bull; <strong>Bottom (tinted):</strong> <strong>"1/4"-20 Clearance"</strong> x2 — <strong>17/64" bit</strong><br><br>
+<strong>Long Box Mounting Template:</strong> Position the <strong>cardboard long box template (P/N 55786)</strong> between the metal trim strips above the door. Drill <strong>"1/4-20 Rivet Nut"</strong> (x3) using <strong>3/8" pilot bit</strong>.</div>
+<div class="img-pair">
+<div class="img-col"><div class="img-label before">Pill Light — templates</div><img src="images/cabinet-cuts/large_door_2_with_templates.jpg" alt="Template"></div>
+<div class="img-col"><div class="img-label after">Pill Light — after holes</div><img src="images/cabinet-cuts/large_door_2_after.jpg" alt="After"></div>
+</div>
+<div class="img-pair">
+<div class="img-col"><div class="img-label before">Long Box — templates</div><img src="images/cabinet-cuts/large_door_1_with_templates.jpg" alt="Template"></div>
+<div class="img-col"><div class="img-label after">Long Box — after holes</div><img src="images/cabinet-cuts/large_door_1_after.jpg" alt="After"></div>
+</div>
+<div class="step-tags"><span class="tag tag-template">Pill Light (x3)</span><span class="tag tag-tool">17/64" (F)</span><span class="tag tag-tool">1/2" Bit</span><span class="tag tag-template">Long Box (Cardboard)</span><span class="tag tag-tool">3/8" Pilot</span></div>
+</div></div>
+
+<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
+<div class="step-number">STEP 2.5</div>
+<div class="step-title">Short Box Mounting Template — Drill 1/4&quot;-20 Rivet-Nut Holes</div>
+<div class="step-detail">Position the <strong>red short box template</strong>. Align using <strong>"Register to Joint"</strong> and <strong>"Register to Side"</strong>. Drill <strong>"1/4-20 Rivet Nut"</strong> (x2) using <strong>3/8" pilot bit</strong>.</div>
+<div class="img-pair">
+<div class="img-col"><div class="img-label before">Short Box — templates</div><img src="images/cabinet-cuts/bottom_with_templates.jpg" alt="Template"></div>
+<div class="img-col"><div class="img-label after">Short Box — after holes</div><img src="images/cabinet-cuts/bottom_after.jpg" alt="After"></div>
+</div>
+<div class="step-tags"><span class="tag tag-template">Short Box (Red)</span><span class="tag tag-tool">3/8" Pilot</span></div>
+</div></div>
+
+<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
+<div class="step-number">STEP 2.6</div>
+<div class="step-title">Deburr All Cuts &amp; Clean Metal Filings</div>
+<div class="step-detail">Deburr all cut edges. <strong>Thoroughly vacuum/clean all metal filings and debris</strong> from inside the booth, especially near electronics. Metal shavings cause shorts.</div>
+<div class="step-tags"><span class="tag tag-caution">Critical Cleanup</span></div>
+</div></div>
+</div>
+
+<!-- PHASE 3: SURFACE PREP -->
+<div class="phase-section" id="phase-vinyl">
+<div class="phase-header"><h2>Phase 3 — Surface Preparation</h2><p>With all cabinet cuts complete, prepare the bare booth surfaces before installing hardware.</p></div>
+
+<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
+<div class="step-number">STEP 3.1</div>
 <div class="step-title">Apply White Vinyl Backing to Door Interior &amp; Side Panel Area</div>
 <div class="step-detail"><strong>Critical for LED effect:</strong> Apply white vinyl (or white material) to: (1) the inside of the booth door behind where the pill light panels will mount, and (2) the booth side wall behind where the side panel will mount. This white surface bounces light back through the acrylic diffusion for the pill lights and side panel LEDs. Without this, the LED effect will be significantly diminished.
 <div class="img-pair" style="margin-top:14px;">
@@ -302,145 +406,32 @@ Unpack the kit and verify all components are present:<br>
 </div></div>
 </div>
 
-<!-- PHASE 3 (was 1) -->
-<div class="phase-section" id="phase-cabinet">
-<div class="phase-header"><h2>Phase 3 — Cabinet Modifications (Cuts &amp; Holes)</h2><p>Use the laser-cut acrylic templates to precisely locate all cuts, holes, and slots. Templates are labeled with specific hole sizes and registration points. Clamp templates securely before marking/drilling.</p></div>
-<div class="warning-box"><div class="icon">&#x26A0;</div><div class="text"><strong>Measure twice, cut once.</strong> These are permanent modifications. Always align template registration points ("Register to Screen", "Register to Speaker", "Register to Key Slot", "Register to Existing Screw Holes", "Register to Lock", "Register to Joint", "Register to Side") before marking any holes. Center-punch all drill locations.</div></div>
-
-<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
-<div class="step-number">STEP 3.1</div>
-<div class="step-title">Roof Template — Drill Antenna Holes (.551")</div>
-<div class="step-detail">Position the <strong>red roof template (P/N 55786)</strong> on the top of the booth. Locate all holes labeled <strong>"Antenna Hole .551""</strong> (4 positions — 2 original, 2 offset). Drill using a <strong>.551" drill bit</strong>. Center-punch first.</div>
-<div class="step-tags"><span class="tag tag-template">Roof (Red)</span><span class="tag tag-tool">.551" Bit</span></div>
-</div></div>
-
-<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
-<div class="step-number">STEP 3.2</div>
-<div class="step-title">Roof Template — Drill Holo Fan Power Hole (1")</div>
-<div class="step-detail">Same roof template. Locate <strong>"Holo Fan Power Hole 1""</strong>. Drill using a <strong>1" hole saw or drill bit</strong>. Routes the holo fan power extension cord from the short box into the electronics cabinet.</div>
-<div class="step-tags"><span class="tag tag-template">Roof (Red)</span><span class="tag tag-tool">1" Hole Saw</span></div>
-</div></div>
-
-<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
-<div class="step-number">STEP 3.3</div>
-<div class="step-title">Roof Template — Drill 1/4"-20 Rivet-Nut Pilot Holes &amp; Cut Slots</div>
-<div class="step-detail">Same roof template. Drill all <strong>"1/4-20 Rivet Nut"</strong> positions using a <strong>3/8" pilot bit</strong> (multiple positions). Cut the rectangular/oval <strong>slots</strong> — drill pilot holes at corners first, then connect with the <strong>reciprocating saw</strong>.</div>
-<div class="img-pair">
-<div class="img-col"><div class="img-label before">Roof — templates (red)</div><img src="images/cabinet-cuts/top_with_templates.jpg" alt="Template"></div>
-<div class="img-col"><div class="img-label after">Roof — after all cuts</div><img src="images/cabinet-cuts/top_after.jpg" alt="After"></div>
-</div>
-<div class="step-tags"><span class="tag tag-template">Roof (Red)</span><span class="tag tag-tool">3/8" Pilot</span><span class="tag tag-tool">Recip Saw</span></div>
-</div></div>
-
-<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
-<div class="step-number">STEP 3.4</div>
-<div class="step-title">Camera Housing Template — Drill 6-32 Clearance Holes</div>
-<div class="step-detail">Position the <strong>black half-moon camera housing template (P/N 55786 Rev1)</strong>. Align <strong>"Register to Screen"</strong> and <strong>"Register to Camera Cutout"</strong>. Drill all <strong>"6-32 Clearance"</strong> holes (5 positions) using <strong>#27 (9/64") drill bit</strong>.</div>
-<div class="img-pair">
-<div class="img-col"><div class="img-label before">Front face — templates (red)</div><img src="images/cabinet-cuts/front_with_templates.jpg" alt="Template"></div>
-<div class="img-col"><div class="img-label after">Front face — after cuts</div><img src="images/cabinet-cuts/front_after.jpg" alt="After"></div>
-</div>
-<div class="step-tags"><span class="tag tag-template">Camera Housing (Black)</span><span class="tag tag-tool">9/64" (#27)</span></div>
-</div></div>
-
-<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
-<div class="step-number">STEP 3.5</div>
-<div class="step-title">Speaker &amp; Instrument Panel Template — Drill 6-32 Holes &amp; Cut Oval Rectangle</div>
-<div class="step-detail">Position the <strong>clear speaker/instrument panel template (P/N 55766)</strong>. Align using <strong>"Register to Speaker"</strong> (x2) and <strong>"Register to Ring Light"</strong>. Drill all <strong>"6-32 Clearance"</strong> positions (10+) using <strong>#27 (9/64") bit</strong>. Cut the <strong>"Cut Oval Rectangle Hole"</strong> using <strong>angle grinder</strong> / reciprocating saw.</div>
-<div class="img-pair">
-<div class="img-col"><div class="img-label before">Instrument panel — templates (red)</div><img src="images/cabinet-cuts/instrument_panel_with_templates.jpg" alt="Template"></div>
-<div class="img-col"><div class="img-label after">Instrument panel — after cuts</div><img src="images/cabinet-cuts/instrument_panel_after.jpg" alt="After"></div>
-</div>
-<div class="step-tags"><span class="tag tag-template">Instrument Panel (Clear)</span><span class="tag tag-tool">9/64" (#27)</span><span class="tag tag-tool">Angle Grinder</span></div>
-</div></div>
-
-<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
-<div class="step-number">STEP 3.6</div>
-<div class="step-title">Side Panel Template — Drill 8-32 Holes, Power Injection &amp; Cut Keyhole Slots</div>
-<div class="step-detail">Position the <strong>amber side panel drill template</strong>. Align using <strong>"Register to Existing Screw Holes"</strong> (3 positions). Drill:<br>
-&bull; <strong>"8-32 Clearance Hole"</strong> (x2) — <strong>#18 (11/64") bit</strong><br>
-&bull; <strong>"Power Injection 3/4""</strong> (x2) — <strong>3/4" bit</strong><br>
-Cut <strong>"Cut Keyhole Slot"</strong> (x2) — <strong>reciprocating saw</strong> (drill pilot holes at each end first)</div>
-<div class="img-pair">
-<div class="img-col"><div class="img-label before">Side panel area — templates (red)</div><img src="images/cabinet-cuts/large_door_2_with_templates.jpg" alt="Template"></div>
-<div class="img-col"><div class="img-label after">Side panel area — after cuts</div><img src="images/cabinet-cuts/large_door_2_after.jpg" alt="After"></div>
-</div>
-<div class="step-tags"><span class="tag tag-template">Side Panel (Amber)</span><span class="tag tag-tool">11/64" (#18)</span><span class="tag tag-tool">3/4" Bit</span><span class="tag tag-tool">Recip Saw</span></div>
-</div></div>
-
-<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
-<div class="step-number">STEP 3.7</div>
-<div class="step-title">Door Template — Drill 8-32 &amp; 5/8" Holes, Cut Rectangle &amp; Arrow Lock Slots</div>
-<div class="step-detail">Position the <strong>gray door template</strong>. Align using <strong>"Register to Key Slot"</strong>. Drill/cut:<br>
-&bull; <strong>"8-32 Clearance"</strong> (x4) — <strong>#18 (11/64") bit</strong><br>
-&bull; <strong>"5/8" Hole"</strong> (x1) — <strong>5/8" drill bit</strong><br>
-&bull; <strong>"Cut out Rectangle Slot"</strong> — <strong>reciprocating saw</strong><br>
-&bull; <strong>"Cut Arrow Lock Slot"</strong> — <strong>reciprocating saw</strong></div>
-<div class="img-pair">
-<div class="img-col"><div class="img-label before">Door — templates (red)</div><img src="images/cabinet-cuts/large_door_1_with_templates.jpg" alt="Template"></div>
-<div class="img-col"><div class="img-label after">Door — after cuts</div><img src="images/cabinet-cuts/large_door_1_after.jpg" alt="After"></div>
-</div>
-<div class="step-tags"><span class="tag tag-template">Door (Gray)</span><span class="tag tag-tool">11/64" (#18)</span><span class="tag tag-tool">5/8" Bit</span><span class="tag tag-tool">Recip Saw</span></div>
-</div></div>
-
-<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
-<div class="step-number">STEP 3.8</div>
-<div class="step-title">Pill Light Panel Templates (x3) — Drill 1/4"-20 &amp; Power Injection Holes</div>
-<div class="step-detail">Three templates (Top/Middle/Bottom). Align each using <strong>"Register to Lock"</strong>:<br>
-&bull; <strong>Top (clear):</strong> <strong>"1/4"-20 Clearance"</strong> x2 — <strong>17/64" bit</strong><br>
-&bull; <strong>Middle (red):</strong> <strong>"1/4"-20 Clearance"</strong> x2 — <strong>17/64" bit</strong> + <strong>"1/2"+ Power Injection Pill Light"</strong> x2 — <strong>1/2" bit</strong><br>
-&bull; <strong>Bottom (tinted):</strong> <strong>"1/4"-20 Clearance"</strong> x2 — <strong>17/64" bit</strong></div>
-<div class="img-pair">
-<div class="img-col"><div class="img-label before">Bottom/door interior — templates (red)</div><img src="images/cabinet-cuts/bottom_with_templates.jpg" alt="Template"></div>
-<div class="img-col"><div class="img-label after">Bottom/door — after holes</div><img src="images/cabinet-cuts/bottom_after.jpg" alt="After"></div>
-</div>
-<div class="step-tags"><span class="tag tag-template">Pill Light (x3)</span><span class="tag tag-tool">17/64" (F)</span><span class="tag tag-tool">1/2" Bit</span></div>
-</div></div>
-
-<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
-<div class="step-number">STEP 3.9</div>
-<div class="step-title">Long Box Mounting Template — Drill 1/4"-20 Rivet-Nut Holes</div>
-<div class="step-detail">Position the <strong>cardboard long box template (P/N 55786)</strong> on the booth front, <strong>between the metal trim strips above the door</strong>. Drill <strong>"1/4-20 Rivet Nut"</strong> (x3) using <strong>3/8" pilot bit</strong>.</div>
-<div class="step-tags"><span class="tag tag-template">Long Box (Cardboard)</span><span class="tag tag-tool">3/8" Pilot</span></div>
-</div></div>
-
-<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
-<div class="step-number">STEP 3.10</div>
-<div class="step-title">Short Box Mounting Template — Drill 1/4"-20 Rivet-Nut Holes</div>
-<div class="step-detail">Position the <strong>red short box template</strong>. Align using <strong>"Register to Joint"</strong> and <strong>"Register to Side"</strong>. Drill <strong>"1/4-20 Rivet Nut"</strong> (x2) using <strong>3/8" pilot bit</strong>.</div>
-<div class="step-tags"><span class="tag tag-template">Short Box (Red)</span><span class="tag tag-tool">3/8" Pilot</span></div>
-</div></div>
-
-<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
-<div class="step-number">STEP 3.11</div>
-<div class="step-title">Deburr All Cuts &amp; Clean Metal Filings</div>
-<div class="step-detail">Deburr all cut edges. <strong>Thoroughly vacuum/clean all metal filings and debris</strong> from inside the booth, especially near electronics. Metal shavings cause shorts.</div>
-<div class="step-tags"><span class="tag tag-caution">Critical Cleanup</span></div>
-</div></div>
-</div>
-
-<!-- PHASE 2 -->
+<!-- PHASE 4 -->
 <div class="phase-section" id="phase-hardware">
 <div class="phase-header"><h2>Phase 4 — Mounting Hardware Installation</h2><p>Install all rivet-nuts, mounting brackets, and structural hardware before attaching kit components.</p></div>
 
 <div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
 <div class="step-number">STEP 4.1</div>
 <div class="step-title">Install All 1/4"-20 Rivet-Nuts</div>
-<div class="step-detail">Install <strong>1/4"-20 rivet-nuts</strong> into every pilot hole from Steps 3.3, 3.9, and 3.10 (roof, long box, short box). Verify each is seated flush.</div>
+<div class="step-detail">Install <strong>1/4"-20 rivet-nuts</strong> into every pilot hole from Steps 2.1, 2.4, and 2.5 (roof, long box, short box). Verify each is seated flush.</div>
 <div class="step-tags"><span class="tag tag-tool">1/4"-20 Rivet-Nut Tool</span></div>
 </div></div>
 
 <div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
 <div class="step-number">STEP 4.2</div>
 <div class="step-title">Install Side Panel 3/8" Aluminum Riser</div>
-<div class="step-detail">Bolt the <strong>3/8" aluminum riser</strong> to the booth side using the 8-32 holes from Step 3.6. This provides throw distance for LED diffusion. Verify flush.</div>
+<div class="step-detail">Bolt the <strong>3/8" aluminum riser</strong> to the booth side using the 8-32 holes from Step 2.3. This provides throw distance for LED diffusion. Verify flush.</div>
 <div class="step-tags"><span class="tag tag-info">Riser Panel</span></div>
 </div></div>
 
 <div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
 <div class="step-number">STEP 4.3</div>
 <div class="step-title">Install Modem Mounting Plate (Between Speakers)</div>
-<div class="step-detail">Mount the <strong>modem plate</strong> between speakers using existing hardware — no new weld nuts needed. Verify modem <strong>Power</strong> and <strong>LAN</strong> ports accessible from below.</div>
+<div class="step-detail">Mount the <strong>modem plate</strong> between speakers using existing hardware — no new weld nuts needed. Verify modem <strong>Power</strong> and <strong>LAN</strong> ports accessible from below.
+<div class="img-pair" style="margin-top:12px;">
+<div class="img-col"><div class="img-label before">Reference — Upper Interior (Modem Area)</div><img src="images/hardware/upper_interior_camera_speakers.jpg" alt="Upper interior reference"></div>
+</div>
+</div>
 <div class="step-tags"><span class="tag tag-info">Uses Existing Hardware</span></div>
 </div></div>
 
@@ -454,14 +445,18 @@ Cut <strong>"Cut Keyhole Slot"</strong> (x2) — <strong>reciprocating saw</stro
 <div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
 <div class="step-number">STEP 4.5</div>
 <div class="step-title">Install Camera Housing</div>
-<div class="step-detail">Mount camera housing using 6-32 holes from Step 3.4. <strong>Verify housing does not occlude camera lens</strong> — power on briefly to check if needed.</div>
+<div class="step-detail">Mount camera housing using 6-32 holes from Step 2.2. <strong>Verify housing does not occlude camera lens</strong> — power on briefly to check if needed.
+<div class="img-pair" style="margin-top:12px;">
+<div class="img-col"><div class="img-label before">Reference — Camera &amp; Speaker Area</div><img src="images/hardware/upper_interior_speakers_hopper.jpg" alt="Camera and speaker area"></div>
+</div>
+</div>
 <div class="step-tags"><span class="tag tag-caution">Check Lens Clearance</span><span class="tag tag-info">6-32 Screws</span></div>
 </div></div>
 
 <div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
 <div class="step-number">STEP 4.6</div>
 <div class="step-title">Install Short Box &amp; Long Box Assemblies</div>
-<div class="step-detail">Mount <strong>long box</strong> (1/4"-20 rivet-nuts, Step 3.9, between trim strips above door). Mount <strong>short box / holo tower</strong> (Step 3.10). Route <strong>10ft 90° holo fan power cord</strong> through 1" hole, through ceiling cavity, into electronics cabinet.</div>
+<div class="step-detail">Mount <strong>long box</strong> (1/4"-20 rivet-nuts, Step 2.4, between trim strips above door). Mount <strong>short box / holo tower</strong> (Step 2.5). Route <strong>10ft 90° holo fan power cord</strong> through 1" hole, through ceiling cavity, into electronics cabinet.</div>
 <div class="step-tags"><span class="tag tag-info">1/4"-20 Bolts</span></div>
 </div></div>
 
@@ -479,7 +474,7 @@ Cut <strong>"Cut Keyhole Slot"</strong> (x2) — <strong>reciprocating saw</stro
 
 <div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
 <div class="step-number">STEP 5.1</div><div class="step-title">Mount Instrument Panel Assembly</div>
-<div class="step-detail">Attach instrument panel using 6-32 mounting points (Step 3.5). Acrylic tiles recessed under black cover plate. <strong>Wago solderless lever connectors</strong> pre-wired on back.</div>
+<div class="step-detail">Attach instrument panel using 6-32 mounting points (Step 2.2). Acrylic tiles recessed under black cover plate. <strong>Wago solderless lever connectors</strong> pre-wired on back.</div>
 <div class="step-tags"><span class="tag tag-info">Wago Connectors</span><span class="tag tag-info">6-32</span></div>
 </div></div>
 
@@ -491,7 +486,12 @@ Cut <strong>"Cut Keyhole Slot"</strong> (x2) — <strong>reciprocating saw</stro
 
 <div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
 <div class="step-number">STEP 5.3</div><div class="step-title">Mount Pill Light Panels (x2) to Door</div>
-<div class="step-detail">Attach both pill light panels using 1/4"-20 holes (Step 3.8). Route LED leads through 1/2"+ power injection holes. <strong>Confirm white backer in place</strong> (Phase 2). Each panel: 2x 5m COB strips (12W/m peak), facing backward.</div>
+<div class="step-detail">Attach both pill light panels using 1/4"-20 holes (Step 2.4). Route LED leads through 1/2"+ power injection holes. <strong>Confirm white backer in place</strong> (Phase 3). Each panel: 2x 5m COB strips (12W/m peak), facing backward.
+<div class="img-pair" style="margin-top:12px;">
+<div class="img-col"><div class="img-label before">Reference — Print Chute LED Wiring</div><img src="images/panels/print_chute_led_wiring.jpg" alt="Print chute LED wiring"></div>
+<div class="img-col"><div class="img-label before">Reference — Printer Door Area</div><img src="images/panels/printer_door_area.jpg" alt="Printer door area"></div>
+</div>
+</div>
 <div class="step-tags"><span class="tag tag-caution">Confirm White Backer</span><span class="tag tag-info">1/4"-20 Bolts</span></div>
 </div></div>
 
@@ -532,6 +532,10 @@ Cut <strong>"Cut Keyhole Slot"</strong> (x2) — <strong>reciprocating saw</stro
 <div class="img-pair" style="margin-top:14px;">
 <div class="img-col"><div class="img-label before">PSU Install Position</div><img src="images/electrical/psu_position.png" alt="New PSU installation position on booth floor"></div>
 </div>
+<div class="img-pair" style="margin-top:12px;">
+<div class="img-col"><div class="img-label before">Reference — Electronics Cabinet</div><img src="images/electrical/electronics_closeup_computer_amp.jpg" alt="Electronics cabinet"></div>
+<div class="img-col"><div class="img-label before">Reference — Cable Routing</div><img src="images/electrical/cable_routing_usb.jpg" alt="Cable routing"></div>
+</div>
 </div>
 <div class="step-tags"><span class="tag tag-caution">New PSU</span><span class="tag tag-info">12V 6000K</span></div>
 </div></div>
@@ -544,19 +548,29 @@ Cut <strong>"Cut Keyhole Slot"</strong> (x2) — <strong>reciprocating saw</stro
 
 <div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
 <div class="step-number">STEP 6.3</div><div class="step-title">Wire Side Panel COB Strip &amp; Power Injection</div>
-<div class="step-detail">Connect 24" 12V COB strip to PSU. Leads route through 3/4" power injection holes (Step 3.6).</div>
+<div class="step-detail">Connect 24" 12V COB strip to PSU. Leads route through 3/4" power injection holes (Step 2.3).</div>
 <div class="step-tags"><span class="tag tag-info">12V COB White</span></div>
 </div></div>
 
 <div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
 <div class="step-number">STEP 6.4</div><div class="step-title">Wire Side Panel WS2811 Addressable Strip</div>
-<div class="step-detail">Connect 24" WS2811 FCOB strip to 12V power <strong>and</strong> data line to microcontroller / smileOS controller.</div>
+<div class="step-detail">Connect 24" WS2811 FCOB strip to 12V power <strong>and</strong> data line to microcontroller / smileOS controller.
+<div class="img-pair" style="margin-top:12px;">
+<div class="img-col"><div class="img-label before">Reference — LED Controller Board</div><img src="images/electrical/led_controller_board_closeup.jpg" alt="LED controller board"></div>
+<div class="img-col"><div class="img-label before">Reference — LED Controller Wiring</div><img src="images/electrical/led_controller_pulse_wiring.jpg" alt="LED controller wiring"></div>
+</div>
+</div>
 <div class="step-tags"><span class="tag tag-info">WS2811 12V</span><span class="tag tag-caution">Data Line</span></div>
 </div></div>
 
 <div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
 <div class="step-number">STEP 6.5</div><div class="step-title">Wire Instrument Panel LEDs</div>
-<div class="step-detail">Use pre-installed <strong>Wago lever connectors</strong>. 8x indicator bulbs + 8" COB strip. Insert stripped wires — no soldering.</div>
+<div class="step-detail">Use pre-installed <strong>Wago lever connectors</strong>. 8x indicator bulbs + 8" COB strip. Insert stripped wires — no soldering.
+<div class="img-pair" style="margin-top:12px;">
+<div class="img-col"><div class="img-label before">Reference — Amplifier (Audio)</div><img src="images/electrical/amplifier_mounted.jpg" alt="Amplifier mounted"></div>
+<div class="img-col"><div class="img-label before">Reference — Computer &amp; USB Cables</div><img src="images/electrical/computer_usb_cables.jpg" alt="Computer USB cables"></div>
+</div>
+</div>
 <div class="step-tags"><span class="tag tag-info">Wago — No Soldering</span></div>
 </div></div>
 
@@ -574,7 +588,11 @@ Cut <strong>"Cut Keyhole Slot"</strong> (x2) — <strong>reciprocating saw</stro
 
 <div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
 <div class="step-number">STEP 6.8</div><div class="step-title">Verify All LED Connections — Power-On Test</div>
-<div class="step-detail">Power on 12V PSU. Verify all LEDs illuminate: pill panels, side panel, instrument panel, chute border. Power off when confirmed.</div>
+<div class="step-detail">Power on 12V PSU. Verify all LEDs illuminate: pill panels, side panel, instrument panel, chute border. Power off when confirmed.
+<div class="img-pair" style="margin-top:12px;">
+<div class="img-col"><div class="img-label before">Reference — Full Booth Interior</div><img src="images/reference/booth_interior_full.jpg" alt="Full booth interior"></div>
+</div>
+</div>
 <div class="step-tags"><span class="tag tag-caution">Power Test</span></div>
 </div></div>
 </div>
@@ -603,7 +621,12 @@ Cut <strong>"Cut Keyhole Slot"</strong> (x2) — <strong>reciprocating saw</stro
 
 <div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
 <div class="step-number">STEP 7.4</div><div class="step-title">Visual Inspection &amp; Fit Check</div>
-<div class="step-detail">Walk around booth: shells secure, no gaps, panels flush, thumbscrews tight, cards displayed, marquee mounted. Door opens/closes without interfering with pill panels.</div>
+<div class="step-detail">Walk around booth: shells secure, no gaps, panels flush, thumbscrews tight, cards displayed, marquee mounted. Door opens/closes without interfering with pill panels.
+<div class="img-pair" style="margin-top:12px;">
+<div class="img-col"><div class="img-label before">Reference — "PHOTOS" Marquee (pre-conversion)</div><img src="images/reference/photos_marquee.jpg" alt="Photos marquee"></div>
+<div class="img-col"><div class="img-label before">Reference — Front Ring Light &amp; Display</div><img src="images/reference/ring_light_front.jpg" alt="Ring light front"></div>
+</div>
+</div>
 <div class="step-tags"><span class="tag tag-info">QC Check</span></div>
 </div></div>
 

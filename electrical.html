@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Galactic ID — Electrical Modifications Spec</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=DM+Sans:wght@400;500;700&display=swap');
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', sans-serif; background: #0c0c10; color: #d4d4d8; line-height: 1.7; font-size: 15px; }
+  .page { max-width: 880px; margin: 0 auto; padding: 40px 28px 80px; }
+  h1 { font-size: 26px; color: #fff; letter-spacing: 1px; border-bottom: 2px solid #ef4444; padding-bottom: 12px; margin-bottom: 8px; }
+  .subtitle { color: #71717a; font-size: 13px; margin-bottom: 40px; }
+  h2 { font-size: 19px; color: #ef4444; margin: 40px 0 16px; padding-left: 12px; border-left: 3px solid #ef4444; }
+  h3 { font-size: 16px; color: #fafafa; margin: 24px 0 10px; }
+  p { margin-bottom: 12px; }
+  strong { color: #fafafa; }
+  code, .mono { font-family: 'JetBrains Mono', monospace; font-size: 13px; background: #18181b; padding: 2px 6px; border-radius: 3px; color: #a1a1aa; }
+  a { color: #60a5fa; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; margin: 16px 0 24px; font-size: 14px; }
+  th { background: #18181b; color: #ef4444; text-align: left; padding: 10px 14px; border: 1px solid #27272a; font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: .5px; }
+  td { padding: 10px 14px; border: 1px solid #27272a; }
+  tr:nth-child(even) td { background: #131316; }
+  td.num { text-align: right; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #fafafa; }
+  td.component { font-weight: 700; color: #fafafa; }
+  tr.total td { background: #1c1917; font-weight: 700; color: #fbbf24; border-top: 2px solid #ef4444; }
+
+  /* Callouts */
+  .warn { background: #1c1917; border-left: 3px solid #f59e0b; padding: 14px 18px; margin: 20px 0; border-radius: 0 6px 6px 0; }
+  .warn .label { color: #f59e0b; font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+  .info { background: #0c1929; border-left: 3px solid #3b82f6; padding: 14px 18px; margin: 20px 0; border-radius: 0 6px 6px 0; }
+  .info .label { color: #3b82f6; font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+
+  /* Component cards */
+  .comp { background: #18181b; border: 1px solid #27272a; border-radius: 8px; padding: 20px; margin: 20px 0; }
+  .comp-name { font-size: 16px; font-weight: 700; color: #fafafa; margin-bottom: 4px; }
+  .comp-loc { font-size: 12px; color: #71717a; margin-bottom: 12px; text-transform: uppercase; letter-spacing: .5px; }
+  .comp dl { display: grid; grid-template-columns: 140px 1fr; gap: 6px 12px; font-size: 14px; }
+  .comp dt { color: #a1a1aa; font-weight: 500; }
+  .comp dd { color: #e4e4e7; }
+
+  /* Wiring diagram */
+  .diagram { background: #111114; border: 1px solid #27272a; border-radius: 8px; padding: 20px; margin: 24px 0; font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.8; color: #a1a1aa; overflow-x: auto; white-space: pre; }
+  .diagram .highlight { color: #ef4444; }
+  .diagram .volt { color: #fbbf24; }
+  .diagram .data { color: #34d399; }
+
+  ul { margin: 8px 0 16px 20px; }
+  li { margin-bottom: 6px; }
+</style>
+</head>
+<body>
+<!-- ===== SITE-WIDE NAV BAR ===== -->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+.gid-site-nav{position:fixed;top:0;left:0;right:0;height:44px;background:#08090d;display:flex;align-items:center;justify-content:space-between;padding:0 24px;z-index:10000;border-bottom:1px solid rgba(79,195,247,.15);box-shadow:0 1px 12px rgba(79,195,247,.08);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif}
+.gid-site-nav .gid-nav-logo{font-family:'Orbitron',sans-serif;font-weight:700;font-size:16px;color:#4fc3f7;letter-spacing:3px;text-decoration:none;text-shadow:0 0 10px rgba(79,195,247,.4)}
+.gid-site-nav .gid-nav-links{display:flex;gap:6px;align-items:center}
+.gid-site-nav .gid-nav-links a{color:#9aa0a6;font-size:12px;font-weight:500;text-decoration:none;padding:6px 12px;border-radius:4px;letter-spacing:.3px;transition:color .2s,background .2s;white-space:nowrap}
+.gid-site-nav .gid-nav-links a:hover{color:#e8eaed;background:rgba(255,255,255,.06)}
+.gid-site-nav .gid-nav-links a.gid-nav-active{color:#4fc3f7;background:rgba(79,195,247,.1)}
+</style>
+<nav class="gid-site-nav">
+  <a href="index.html" class="gid-nav-logo">GID</a>
+  <div class="gid-nav-links">
+    <a href="index.html">Assembly Guide</a>
+    <a href="timeline.html">Timeline</a>
+    <a href="electrical.html" class="gid-nav-active">Electrical Spec</a>
+    <a href="electrical-system.html">System Diagram</a>
+    <a href="electrical-illustrated.html">Illustrated Spec</a>
+    <a href="routing.html">Routing Map</a>
+  </div>
+</nav>
+<div style="height:44px"></div>
+<!-- ===== END NAV BAR ===== -->
+<div class="page">
+
+<h1>Galactic ID Photobooth — Electrical Modifications Specification</h1>
+<p class="subtitle">Compiled from TSL ↔ Apple Industries correspondence (Dec 2025 – Apr 2026) &amp; visual reference PDFs</p>
+
+<h2>1. Overview</h2>
+<p>The Galactic ID kit adds significant LED lighting and one AC-powered accessory (holographic fan) to the existing PHOTOMA mini platform. All decorative lighting runs on <strong>12V DC</strong> (sourced from the booth's internal PSU), except for the side panel ID illumination strips which use <strong>5V addressable RGB</strong> LEDs. The holographic fan runs on <strong>120V AC</strong> via its own power supply routed through a dedicated extension cord.</p>
+
+<p>Paul Ward (TSL) provided a detailed power calculation on <strong>April 1, 2026</strong>, estimating a total additional LED load of <strong>~192W at 12V</strong>. On April 2, he recommended <strong>sizing up to a larger 12V PSU</strong> after a vendor substitution pushed COB strip wattage from 8W/m to 12W/m, leaving only ~8W headroom on the original calculation.</p>
+
+<h2>2. Component-by-Component LED Breakdown</h2>
+
+<div class="comp">
+  <div class="comp-name">Pill Light Panels (×2 — Left &amp; Right Door)</div>
+  <div class="comp-loc">Mounted inside both booth doors</div>
+  <dl>
+    <dt>LED Type</dt>
+    <dd><strong>12V COB LED strip</strong> — 6000K cool white<br>
+    Product: <a href="https://www.amazon.com/gp/product/B0DHV85VCR/">Amazon B0DHV85VCR</a> (confirmed Apr 2 by Paul)</dd>
+    <dt>Power Rating</dt>
+    <dd>Originally spec'd at <strong>8W/m</strong>; actual sourced strip rated up to <strong>12W/m</strong></dd>
+    <dt>Strip Length</dt>
+    <dd><strong>~11m per panel</strong> (2 strips per wall — adhered to back of wood along columns and perimeter)</dd>
+    <dt>Total per Panel</dt>
+    <dd><strong>88W</strong> (at 8W/m) — up to <strong>132W</strong> (at 12W/m)</dd>
+    <dt>Total (×2)</dt>
+    <dd><strong>176W</strong> (at 8W/m nominal) — up to <strong>264W</strong> (at 12W/m worst case)</dd>
+    <dt>Wiring</dt>
+    <dd>Strips face <strong>backward into cavity</strong>, bouncing light off white backer to diffuse through milk-white acrylic pill lenses. Connected to single 12V lead per panel.</dd>
+    <dt>Color Temp Note</dt>
+    <dd>Initial cool white (6000K) strip was "too blue" per TSL. Warmer COB strip was auditioned. Final confirmed as 6000K after sourcing the Amazon strip.</dd>
+    <dt>Install Note</dt>
+    <dd>Inner door must be skinned with <strong>white vinyl</strong> (or white material) behind panels for proper light reflectivity. TSL prototyped with paper.</dd>
+  </dl>
+</div>
+
+<div class="comp">
+  <div class="comp-name">Side Panel (×1 — Front Side Only)</div>
+  <div class="comp-loc">Mounted over existing sheet-metal bump-out (or riser plate)</div>
+  <dl>
+    <dt>LED Type 1</dt>
+    <dd><strong>WS2811 FCOB (addressable RGB)</strong> — 5V or 12V (Paul leaning WS2811 = 12V)<br>
+    ~13W/m, 24" (0.6m) strip</dd>
+    <dt>LED Type 1 Purpose</dt>
+    <dd>Horizontal strips on top and bottom of each ID card pair — provides colored ambient illumination behind cards</dd>
+    <dt>LED Type 1 Power</dt>
+    <dd><strong>~9W</strong></dd>
+    <dt>LED Type 2</dt>
+    <dd><strong>12V COB LED strip</strong> — plain white<br>
+    8W/m, 24" (0.6m) strip</dd>
+    <dt>LED Type 2 Purpose</dt>
+    <dd>Backlights the <strong>red pill-shaped acrylic lenses</strong> (lenses are already red, so white light through red acrylic = red glow)</dd>
+    <dt>LED Type 2 Power</dt>
+    <dd><strong>~5W</strong></dd>
+    <dt>Total per Panel</dt>
+    <dd><strong>14W</strong></dd>
+    <dt>Wiring</dt>
+    <dd><strong>2 tails</strong> exit the back: one for the 12V white COB bottom strip, one for the addressable RGB strip. Uses Wago connectors for tool-free disconnect.</dd>
+    <dt>Mounting</dt>
+    <dd>Acrylic template provided for drilling holes and 2 keyhole slots. Existing bump-out panel <strong>removed entirely</strong> on first 10 units; replaced with riser plate (provided free by TSL) for LED diffusion distance. Booth side also needs white vinyl backing.</dd>
+    <dt>Data Signal</dt>
+    <dd>WS2811/WS2812B requires a <strong>data signal wire</strong> in addition to power — will need connection to a microcontroller or LED controller from Apple Industries side.</dd>
+  </dl>
+</div>
+
+<div class="info">
+  <div class="label">Jesse's Input (Mar 23)</div>
+  <p>Jesse specified <strong>WS2812B (5V individually addressable)</strong> for top/bottom ID illumination strips, with milk-white backing. Also noted the red pill lights below could be either WS2811 (12V) or WS2812B (5V). TSL opted for plain white 12V COB on the red pills since the lenses are already red — no addressability needed there.</p>
+</div>
+
+<div class="comp">
+  <div class="comp-name">Instrument Panel (×1)</div>
+  <div class="comp-loc">Mounted below speaker border on front fascia</div>
+  <dl>
+    <dt>LED Type 1</dt>
+    <dd><strong>12V LED indicator bulbs</strong> (panel-mount) — ~0.02W each</dd>
+    <dt>Quantity</dt>
+    <dd><strong>8 bulbs</strong> (4 were being replaced as of Mar 31)</dd>
+    <dt>LED Type 1 Power</dt>
+    <dd><strong>~0.16W</strong></dd>
+    <dt>LED Type 2</dt>
+    <dd><strong>12V COB LED strip</strong> — 8W/m, 8" (0.2m) length</dd>
+    <dt>LED Type 2 Purpose</dt>
+    <dd>Backlights colored acrylic tiles (blue, red, white) — tiles are glued nearly flush with top plate</dd>
+    <dt>LED Type 2 Power</dt>
+    <dd><strong>~1.76W</strong></dd>
+    <dt>Total</dt>
+    <dd><strong>~2W</strong></dd>
+    <dt>Wiring</dt>
+    <dd>All LEDs joined to <strong>single 12V connection via Wago connectors</strong> — can be disconnected without desoldering. Some wires still need shortening. Wago arrangement visible in Apr 3 PDF photos.</dd>
+    <dt>Install Note</dt>
+    <dd>Tiles can be sunk 1/16" deeper on production units to hide visible lip outline when backlit. Coplanar look deemed most "correct" for Star Wars aesthetic.</dd>
+  </dl>
+</div>
+
+<div class="comp">
+  <div class="comp-name">Chute Border (×1)</div>
+  <div class="comp-loc">Print chute / output area border</div>
+  <dl>
+    <dt>LED Type</dt>
+    <dd><strong>12V LED indicator bulbs</strong> (panel-mount) — ~0.02W each</dd>
+    <dt>Quantity</dt>
+    <dd><strong>9 bulbs</strong></dd>
+    <dt>Total</dt>
+    <dd><strong>~0.18W</strong></dd>
+    <dt>Notes</dt>
+    <dd>Plus a machined aluminum indicator light greeblie. LEDs were still arriving as of Mar 30.</dd>
+  </dl>
+</div>
+
+<div class="comp">
+  <div class="comp-name">Holographic Fan (×1)</div>
+  <div class="comp-loc">Holo Tower housing, mounted on top of booth</div>
+  <dl>
+    <dt>Power</dt>
+    <dd><strong>120V AC</strong> — separate from 12V LED bus</dd>
+    <dt>Power Delivery</dt>
+    <dd><strong>10-foot 90° extension cord</strong> routed from electronics cabinet, up through ceiling panel, to fan in tower housing. TSL confirmed cord length is more than enough with slack to spare.</dd>
+    <dt>Fan PSU Location</dt>
+    <dd>Fan's own power supply can be mounted <strong>basically anywhere in the electronics panel</strong> (Paul, Mar 23)</dd>
+    <dt>Install Process</dt>
+    <dd>Requires removing <strong>ceiling panel (8 screws)</strong> to feed cord from electronics cabinet to holo tower. Same access path as antenna wire routing — straightforward.</dd>
+    <dt>Sourcing</dt>
+    <dd>Fan sourced by Apple Industries (not TSL). 65cm fan with 72cm clear cover. TSL builds the 2-piece vacuum-formed housing around it.</dd>
+  </dl>
+</div>
+
+<h2>3. Power Budget Summary</h2>
+<p>Paul's calculation from April 1, 2026 (based on 8W/m COB strips):</p>
+
+<table>
+  <tr>
+    <th>Component</th>
+    <th>LED Type</th>
+    <th style="text-align:right">Qty / Length</th>
+    <th style="text-align:right">Watts</th>
+  </tr>
+  <tr>
+    <td class="component">Pill Light Panels (×2)</td>
+    <td>12V COB strip, 6000K</td>
+    <td class="num">11m each (22m total)</td>
+    <td class="num">176W</td>
+  </tr>
+  <tr>
+    <td class="component">Side Panel — RGB</td>
+    <td>WS2811 FCOB (addressable)</td>
+    <td class="num">24" (0.6m)</td>
+    <td class="num">9W</td>
+  </tr>
+  <tr>
+    <td class="component">Side Panel — Pill Backlight</td>
+    <td>12V COB strip, white</td>
+    <td class="num">24" (0.6m)</td>
+    <td class="num">5W</td>
+  </tr>
+  <tr>
+    <td class="component">Instrument Panel — Tiles</td>
+    <td>12V COB strip</td>
+    <td class="num">8" (0.2m)</td>
+    <td class="num">1.76W</td>
+  </tr>
+  <tr>
+    <td class="component">Instrument Panel — Indicators</td>
+    <td>12V LED bulbs</td>
+    <td class="num">8 bulbs</td>
+    <td class="num">0.16W</td>
+  </tr>
+  <tr>
+    <td class="component">Chute Border — Indicators</td>
+    <td>12V LED bulbs</td>
+    <td class="num">9 bulbs</td>
+    <td class="num">0.18W</td>
+  </tr>
+  <tr class="total">
+    <td colspan="3">TOTAL ADDITIONAL 12V LOAD</td>
+    <td class="num">192.18W</td>
+  </tr>
+</table>
+
+<div class="warn">
+  <div class="label">⚠ PSU Sizing Alert — April 2, 2026</div>
+  <p>Paul's original 8W/m COB vendor fell through. Replacement strips are rated up to <strong>12W/m</strong> (Amazon B0DHV85VCR, 6000K). At 12W/m, the pill light panels alone could draw <strong>~264W</strong> instead of 176W, pushing total to <strong>~280W+</strong>.</p>
+  <p>Paul demonstrated dimming these to ~9V with reduced current draw, but recommended <strong>sizing up the PSU</strong> for safety margin. With only ~8W headroom at the 8W/m calculation, a larger PSU is strongly advised.</p>
+  <p><strong>Action required:</strong> Apple Industries needs to source a 12V PSU with sufficient headroom. At 12W/m worst case, target at least a <strong>300–350W 12V PSU</strong> to provide 20% headroom.</p>
+</div>
+
+<h2>4. PSU &amp; Power Architecture</h2>
+
+<h3>Existing PHOTOMA mini Power</h3>
+<p>The booth already has a 12V PSU powering existing electronics. The Galactic ID kit adds ~192–280W of 12V load on top of whatever the existing PSU supports.</p>
+
+<h3>Recommended Modification</h3>
+<p><strong>Swap the existing 12V PSU for a larger unit</strong> — or add a dedicated second 12V PSU for the kit lighting. The PSU mounts inside the electronics cabinet. Given the worst-case 280W+ draw from the kit alone, a <strong>dedicated 300–350W 12V mean-well style PSU</strong> for the kit lighting is the safest approach.</p>
+
+<h3>Holographic Fan Power</h3>
+<p>The holographic fan runs on <strong>120V AC</strong> and has its own power supply. A <strong>10-foot 90° extension cord</strong> routes from the electronics cabinet, through the ceiling panel (8 screws to remove), up to the fan in the holo tower. The fan PSU can mount anywhere in the electronics panel.</p>
+
+<h2>5. Wiring Architecture</h2>
+
+<div class="diagram"><span class="highlight">═══ 12V DC BUS (from PSU) ═══</span>
+  │
+  ├── <span class="volt">[Pill Light Panel L]</span> ── 12V COB strip (11m, 6000K) ── single 12V lead
+  │
+  ├── <span class="volt">[Pill Light Panel R]</span> ── 12V COB strip (11m, 6000K) ── single 12V lead
+  │
+  ├── <span class="volt">[Side Panel - Pills]</span> ── 12V COB strip (24", white) ── tail 1
+  │   └── <span class="data">[Side Panel - RGB]</span> ── WS2811/WS2812B (24") ── tail 2 <span class="data">(+ DATA signal)</span>
+  │
+  ├── <span class="volt">[Instrument Panel]</span> ── 12V COB strip (8") + 8× indicator bulbs
+  │                        └── All joined via <span class="highlight">Wago connectors</span> → single 12V out
+  │
+  └── <span class="volt">[Chute Border]</span> ── 9× 12V indicator bulbs
+
+<span class="highlight">═══ 120V AC (separate) ═══</span>
+  │
+  └── <span class="volt">[Holo Fan]</span> ── 10ft 90° extension cord ── through ceiling panel ── fan PSU in cabinet
+</div>
+
+<h2>6. Connector Strategy</h2>
+<p>TSL uses <strong>Wago lever connectors</strong> throughout the instrument panel wiring to join all LED leads to a single 12V connection. This allows tool-free disconnection without desoldering — critical for field serviceability. The same approach appears to be used on other panels.</p>
+<p>The side panel has <strong>2 separate tails</strong> exiting the back: one for 12V white COB, one for the addressable RGB strip. Each connects independently.</p>
+
+<h2>7. Additional Electrical Requirements for Apple Industries</h2>
+
+<table>
+  <tr><th>Requirement</th><th>Details</th><th>Owner</th></tr>
+  <tr>
+    <td class="component">12V PSU Upgrade</td>
+    <td>Source ≥300W 12V PSU (or add dedicated PSU for kit). Current PSU insufficient for ~192–280W additional load.</td>
+    <td>Apple Industries</td>
+  </tr>
+  <tr>
+    <td class="component">White Vinyl Backer</td>
+    <td>Inner door behind pill light panels AND booth side behind side panel must be skinned with white vinyl for light reflectivity.</td>
+    <td>Apple Industries</td>
+  </tr>
+  <tr>
+    <td class="component">LED Controller (Side Panel RGB)</td>
+    <td>WS2811/WS2812B addressable strip requires data signal from a microcontroller or standalone LED controller. TSL provides the strip with leads; Apple Industries provides the controller/animation logic.</td>
+    <td>Apple Industries</td>
+  </tr>
+  <tr>
+    <td class="component">Holo Fan Extension Cord</td>
+    <td>10-foot 90° power extension cord (120V AC) — routed through ceiling panel to electronics cabinet. TSL confirmed fit.</td>
+    <td>TSL (included in kit)</td>
+  </tr>
+  <tr>
+    <td class="component">Antenna Wire Routing</td>
+    <td>4 antenna holes (2 original placement, 2 offset): 14mm / 0.551". Wires route through ceiling panel to modem bracket between speakers.</td>
+    <td>Apple Industries (install)</td>
+  </tr>
+  <tr>
+    <td class="component">Ceiling Panel Removal</td>
+    <td>8 screws to remove — required for holo fan cord routing and antenna wire install. Easy access per TSL.</td>
+    <td>Apple Industries (install)</td>
+  </tr>
+</table>
+
+<h2>8. Open Questions &amp; Decisions</h2>
+<ul>
+  <li><strong>PSU sizing:</strong> Need to confirm exact wattage of existing PHOTOMA mini PSU and determine whether to upgrade in-place or add a second dedicated supply for kit lighting.</li>
+  <li><strong>COB strip actual draw:</strong> The 12W/m rated strips may draw less at 12V nominal. Paul demonstrated dimming to ~9V. Need to measure actual draw under typical operating conditions to right-size the PSU.</li>
+  <li><strong>Pill light color temperature:</strong> 6000K confirmed for first 10 units but TSL noted it was initially "too blue." Warmer strip was auditioned. May revisit for production run.</li>
+  <li><strong>Addressable LED controller:</strong> Apple Industries needs to determine what controller/driver will run the WS2811/WS2812B strips on the side panel — standalone controller, Arduino/ESP32, or integration with smileOS.</li>
+  <li><strong>Instrument panel tile recess:</strong> Paul offered to sink tiles 1/16" deeper on production units to hide visible lip outline. Decision needed before production run.</li>
+</ul>
+
+<h2>9. Source References</h2>
+<table>
+  <tr><th>Date</th><th>Source</th><th>Key Electrical Content</th></tr>
+  <tr><td>Mar 10</td><td>PDF: Design Revision Rev3</td><td>Side panel lighting test (single white LED strip), panel cutout patterns</td></tr>
+  <tr><td>Mar 11</td><td>Email: Paul → Jesse</td><td>Side panel lighting prototype, ID backlight with milk acrylic diffusion, option for separate LED leads</td></tr>
+  <tr><td>Mar 17</td><td>PDF: Updates 03.17</td><td>Side Panel Lighting V2 — addressable RGB Neopixels, COB strip details</td></tr>
+  <tr><td>Mar 23</td><td>Email: Jesse → Paul</td><td>Jesse specifies WS2812B for ID strips; WS2811 or WS2812B for pills</td></tr>
+  <tr><td>Mar 30</td><td>Email: Paul → Jesse</td><td>LED strip options: SMD vs COB, LED specs requested by Jesse</td></tr>
+  <tr><td>Mar 30</td><td>Email: Jesse → Paul</td><td>PSU headroom concern — estimates ~200W, asks for total LED load calculation</td></tr>
+  <tr><td>Mar 31</td><td>PDF: Updates 03.31</td><td>Pill lights with 12V cool white COB (too blue), rear lighting on side panel, instrument panel lit</td></tr>
+  <tr><td>Apr 1</td><td>Email: Paul → Jesse</td><td><strong>Full LED power calculation: 192.18W total</strong>. Detailed per-component breakdown. Pill column skinning needed.</td></tr>
+  <tr><td>Apr 2</td><td>Email: Paul → Jesse</td><td><strong>PSU upgrade recommended.</strong> Vendor substitution: 8W/m → 12W/m strips. Amazon B0DHV85VCR confirmed. Dimming to ~9V tested.</td></tr>
+  <tr><td>Apr 3</td><td>PDF: Updates 04.03</td><td>Instrument panel Wago wiring photos, pill light LED strips on wood backing, side panel 2-tail wiring</td></tr>
+</table>
+
+</div>
+</body>
+</html>
