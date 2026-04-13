@@ -135,7 +135,7 @@ body::after{content:'';position:fixed;top:0;left:0;right:0;bottom:0;background:r
 <button class="phase-btn" data-phase="cabinet">2. Cabinet Cuts<span class="count">6</span></button>
 <button class="phase-btn" data-phase="vinyl">3. Surface Prep<span class="count">1</span></button>
 <button class="phase-btn" data-phase="hardware">4. Hardware Install<span class="count">8</span></button>
-<button class="phase-btn" data-phase="electrical">5. Electrical<span class="count">9</span></button>
+<button class="phase-btn" data-phase="electrical">5. Electrical<span class="count">10</span></button>
 <button class="phase-btn" data-phase="final">6. Final QC<span class="count">5</span></button>
 </div>
 
@@ -525,9 +525,14 @@ Cut <strong>"Cut Keyhole Slot"</strong> (x2) — <strong>reciprocating saw</stro
 
 <div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
 <div class="step-number">STEP 4.8</div>
-<div class="step-title">Install "Star Wars Galactic ID" Marquee Sign</div>
-<div class="step-detail">Replace removed "PHOTOS" marquee with the <strong>"Star Wars Galactic ID" acrylic marquee sign</strong>.</div>
-<div class="step-tags"><span class="tag tag-info">Marquee</span></div>
+<div class="step-title">Install LC 2 (Light Controller 2)</div>
+<div class="step-detail">Install <strong>LC 2</strong> — the second light controller, added specifically for the Galactic ID conversion. LC 2 drives the WS2812 addressable card display LEDs and the dimmable chute border indicator bulbs via PWM outputs. LC 1 (the original light controller) remains on the opposite side of the booth and is unchanged.<br><br>
+<strong>No mounting hardware is included at this time.</strong> Secure LC 2 in the position shown below using available means (double-sided tape, zip ties, etc.) until a permanent bracket is provided.
+<div class="img-pair" style="margin-top:12px;">
+<div class="img-col"><div class="img-label before">LC 2 Install Position</div><img src="images/hardware/LC2_position.png" alt="LC 2 light controller mounting position"></div>
+</div>
+</div>
+<div class="step-tags"><span class="tag tag-caution">No Bracket Yet</span><span class="tag tag-info">LC 2 — GID Addition</span></div>
 </div></div>
 </div>
 
@@ -557,21 +562,24 @@ Each wire should be approximately <strong>2 feet (~60 cm)</strong> of <strong>14
 </div></div>
 
 <div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
-<div class="step-number">STEP 5.2</div><div class="step-title">Wire Pill Light Panel LEDs (x4 strip leads)</div>
-<div class="step-detail">Connect 4 COB strip leads (2 per panel, through 1/2"+ power injection holes) to 12V PSU. Plain white COB — red lenses provide color.</div>
-<div class="step-tags"><span class="tag tag-info">12V COB White</span></div>
+<div class="step-number">STEP 5.2</div><div class="step-title">Wire Pill Light Panel COB Strips (2 leads per panel, split across PSUs)</div>
+<div class="step-detail">Each pill light panel has <strong>2 COB strip leads</strong> routed through the 1/2"+ power injection holes. The two panels are split across both PSUs to balance the load:<br>
+&emsp;&bull; <strong>Door 1 panel</strong> (2 leads) → <strong>12V PSU 1</strong> (existing)<br>
+&emsp;&bull; <strong>Door 2 panel</strong> (2 leads) → <strong>12V PSU 2</strong> (new RSP-500-12)<br><br>
+Plain white 12V COB strips — the red acrylic pill lenses provide the color.</div>
+<div class="step-tags"><span class="tag tag-info">12V COB White</span><span class="tag tag-info">Split Across PSUs</span></div>
 </div></div>
 
 <div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
-<div class="step-number">STEP 5.3</div><div class="step-title">Wire Side Panel COB Strip &amp; Power Injection</div>
+<div class="step-number">STEP 5.3</div><div class="step-title">Wire Side Panel (Red Pills) COB Strip &amp; Power Injection</div>
 <div class="step-detail">Connect 24" 12V COB strip to PSU. Leads route through 3/4" power injection holes (Step 2.3).</div>
 <div class="step-tags"><span class="tag tag-info">12V COB White</span></div>
 </div></div>
 
 <div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
-<div class="step-number">STEP 5.4</div><div class="step-title">Wire Side Panel WS2812 Addressable Strip</div>
-<div class="step-detail">Connect 24" <strong>WS2812</strong> FCOB strip to 12V power <strong>and</strong> data line to microcontroller / smileOS controller.</div>
-<div class="step-tags"><span class="tag tag-info">WS2812 12V</span><span class="tag tag-caution">Data Line</span></div>
+<div class="step-number">STEP 5.4</div><div class="step-title">Wire Side Panel (Card Display) WS2812 Addressable Strip → LC 2</div>
+<div class="step-detail">Connect 24" <strong>WS2812</strong> FCOB strip to 12V power <strong>and</strong> data line to <strong>LC 2</strong> (Light Controller 2 — the additional controller installed specifically for the GID conversion, Step 4.8). <strong>Do not connect to LC 1</strong> — LC 1 is the original light controller on the opposite side of the booth.</div>
+<div class="step-tags"><span class="tag tag-info">WS2812 12V</span><span class="tag tag-caution">Data → LC 2</span></div>
 </div></div>
 
 <div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
@@ -581,9 +589,9 @@ Each wire should be approximately <strong>2 feet (~60 cm)</strong> of <strong>14
 </div></div>
 
 <div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
-<div class="step-number">STEP 5.6</div><div class="step-title">Wire Chute Border Indicator Bulbs</div>
-<div class="step-detail">Connect 9x 12V LED indicator bulbs to PSU. Total: ~0.18W.</div>
-<div class="step-tags"><span class="tag tag-info">9x Bulbs</span></div>
+<div class="step-number">STEP 5.6</div><div class="step-title">Wire Chute Border Indicator Bulbs → LC 2 PWM Outputs</div>
+<div class="step-detail">Connect 9x 12V LED indicator bulbs to <strong>LC 2's PWM outputs</strong> so they can be dimmed. See the electrical diagram at the top of this page for exact wiring details and port assignments. Total load: ~0.18W.</div>
+<div class="step-tags"><span class="tag tag-info">9x Bulbs</span><span class="tag tag-caution">PWM → LC 2</span></div>
 </div></div>
 
 <div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
@@ -603,6 +611,13 @@ Each wire should be approximately <strong>2 feet (~60 cm)</strong> of <strong>14
 <div class="step-title">Reinstall Ceiling Panel</div>
 <div class="step-detail">All cables routed (holo fan cord, USB, etc.). Reinstall ceiling panel with 8 screws. Verify no cables pinched.</div>
 <div class="step-tags"><span class="tag tag-tool">Screwdriver</span></div>
+</div></div>
+
+<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
+<div class="step-number">STEP 5.10</div>
+<div class="step-title">Install "Star Wars Galactic ID" Marquee Sign</div>
+<div class="step-detail">Replace removed "PHOTOS" marquee with the <strong>"Star Wars Galactic ID" acrylic marquee sign</strong>.</div>
+<div class="step-tags"><span class="tag tag-info">Marquee</span></div>
 </div></div>
 </div>
 
