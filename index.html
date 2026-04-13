@@ -134,8 +134,8 @@ body::after{content:'';position:fixed;top:0;left:0;right:0;bottom:0;background:r
 <button class="phase-btn" data-phase="removal">1. Removals<span class="count">7</span></button>
 <button class="phase-btn" data-phase="cabinet">2. Cabinet Cuts<span class="count">6</span></button>
 <button class="phase-btn" data-phase="vinyl">3. Surface Prep<span class="count">1</span></button>
-<button class="phase-btn" data-phase="hardware">4. Hardware Install<span class="count">9</span></button>
-<button class="phase-btn" data-phase="electrical">5. Electrical<span class="count">8</span></button>
+<button class="phase-btn" data-phase="hardware">4. Hardware Install<span class="count">8</span></button>
+<button class="phase-btn" data-phase="electrical">5. Electrical<span class="count">9</span></button>
 <button class="phase-btn" data-phase="final">6. Final QC<span class="count">5</span></button>
 </div>
 
@@ -495,15 +495,9 @@ Cut <strong>"Cut Keyhole Slot"</strong> (x2) — <strong>reciprocating saw</stro
 <div class="step-tags"><span class="tag tag-info">1/4"-20 Bolts</span><span class="tag tag-caution">Remove Shells Before Ship</span><span class="tag tag-tool">.551" Antenna Test</span></div>
 </div></div>
 
-<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
-<div class="step-number">STEP 4.6</div>
-<div class="step-title">Reinstall Ceiling Panel</div>
-<div class="step-detail">All cables routed (antennas + holo fan cord). Reinstall ceiling panel with 8 screws. Verify no cables pinched.</div>
-<div class="step-tags"><span class="tag tag-tool">Screwdriver</span></div>
-</div></div>
 
 <div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
-<div class="step-number">STEP 4.7</div>
+<div class="step-number">STEP 4.6</div>
 <div class="step-title">Install Instrument &amp; Speaker Panel Assembly</div>
 <div class="step-detail">Mount the <strong>instrument panel</strong> using the 6-32 mounting points from Phase 2. The panel includes <strong>decorative speaker grilles</strong> (with perforated mesh), acrylic tiles recessed under a black cover plate, and <strong>Wago solderless lever connectors</strong> pre-wired on the back for tool-free LED hookup.
 <div class="img-pair" style="margin-top:8px;">
@@ -515,7 +509,7 @@ Cut <strong>"Cut Keyhole Slot"</strong> (x2) — <strong>reciprocating saw</stro
 </div></div>
 
 <div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
-<div class="step-number">STEP 4.8</div>
+<div class="step-number">STEP 4.7</div>
 <div class="step-title">Mount Pill Light Panels — One Per Door (x2 Doors)</div>
 <div class="step-detail">Each of the booth's <strong>2 large access doors</strong> gets <strong>1 pill light panel</strong>. Attach each panel using 1/4"-20 holes (Phase 2). Route LED leads through 1/2"+ power injection holes. <strong>Confirm white vinyl backer is in place</strong> (Phase 3) before mounting — this is critical for LED light bounce. Each panel has 2x 5m COB strips (12W/m peak), facing backward toward the white backer.
 <div class="img-pair" style="margin-top:8px;">
@@ -530,7 +524,7 @@ Cut <strong>"Cut Keyhole Slot"</strong> (x2) — <strong>reciprocating saw</stro
 </div></div>
 
 <div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
-<div class="step-number">STEP 4.9</div>
+<div class="step-number">STEP 4.8</div>
 <div class="step-title">Install "Star Wars Galactic ID" Marquee Sign</div>
 <div class="step-detail">Replace removed "PHOTOS" marquee with the <strong>"Star Wars Galactic ID" acrylic marquee sign</strong>.</div>
 <div class="step-tags"><span class="tag tag-info">Marquee</span></div>
@@ -548,17 +542,18 @@ Cut <strong>"Cut Keyhole Slot"</strong> (x2) — <strong>reciprocating saw</stro
 <div class="info-box"><div class="icon">&#x1F4A1;</div><div class="text"><strong>LED Load Breakdown:</strong> Pill Panels ~176W (11m COB x2) &bull; Side Panel ~14W &bull; Instrument Panel ~2W &bull; Chute Border ~0.18W &bull; <strong>Total: ~192W (8W/m) to ~280W (12W/m)</strong></div></div>
 
 <div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
-<div class="step-number">STEP 5.1</div><div class="step-title">Install New 12V PSU</div>
-<div class="step-detail">Install a new <strong>12V power supply</strong> in the position shown below — on the booth floor, adjacent to the existing electronics. This dedicated PSU powers all Galactic ID LED loads (pill panels, side panel, instrument panel, chute border). COB strips are <strong>12V 6000K, up to 12W/m</strong>.
+<div class="step-number">STEP 5.1</div><div class="step-title">Install New 12V PSU (RSP-500-12)</div>
+<div class="step-detail">Install the new <strong>Mean Well RSP-500-12</strong> (12V / 500W) power supply on the booth floor, adjacent to the existing electronics. <strong>No special mounting bracket is required</strong> — the PSU sits on the floor of the electronics cabinet. This dedicated PSU powers all Galactic ID LED loads (pill panels, side panel, instrument panel, chute border). COB strips are <strong>12V 6000K, up to 12W/m</strong>.<br><br>
+<strong>AC Power Connection:</strong> The new PSU must be powered from the existing PSU (PSU 1). Connect <strong>3 wires</strong> from PSU 1's AC terminal block to the new PSU's AC input:<br>
+&emsp;1. <strong>Ground (G)</strong> — green or green/yellow<br>
+&emsp;2. <strong>Neutral (N)</strong> — white<br>
+&emsp;3. <strong>Line (L)</strong> — black<br><br>
+Each wire should be approximately <strong>2 feet (~60 cm)</strong> of <strong>14 AWG</strong> stranded copper wire with <strong>M4 fork terminals</strong> crimped on both ends. 14 AWG is rated for 15A and provides ample margin for the RSP-500-12's ~5A AC draw at 115VAC.
 <div class="img-pair" style="margin-top:14px;">
 <div class="img-col"><div class="img-label before">PSU Install Position</div><img src="images/electrical/psu_position.png" alt="New PSU installation position on booth floor"></div>
 </div>
-<div class="img-pair" style="margin-top:12px;">
-<div class="img-col"><div class="img-label before">Reference — Electronics Cabinet</div><img src="images/electrical/electronics_closeup_computer_amp.jpg" alt="Electronics cabinet"></div>
-<div class="img-col"><div class="img-label before">Reference — Cable Routing</div><img src="images/electrical/cable_routing_usb.jpg" alt="Cable routing"></div>
 </div>
-</div>
-<div class="step-tags"><span class="tag tag-caution">New PSU</span><span class="tag tag-info">12V 6000K</span></div>
+<div class="step-tags"><span class="tag tag-caution">New PSU</span><span class="tag tag-info">14 AWG</span><span class="tag tag-info">M4 Fork Terminals</span><span class="tag tag-info">12V 6000K</span></div>
 </div></div>
 
 <div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
@@ -574,24 +569,14 @@ Cut <strong>"Cut Keyhole Slot"</strong> (x2) — <strong>reciprocating saw</stro
 </div></div>
 
 <div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
-<div class="step-number">STEP 5.4</div><div class="step-title">Wire Side Panel WS2811 Addressable Strip</div>
-<div class="step-detail">Connect 24" WS2811 FCOB strip to 12V power <strong>and</strong> data line to microcontroller / smileOS controller.
-<div class="img-pair" style="margin-top:12px;">
-<div class="img-col"><div class="img-label before">Reference — LED Controller Board</div><img src="images/electrical/led_controller_board_closeup.jpg" alt="LED controller board"></div>
-<div class="img-col"><div class="img-label before">Reference — LED Controller Wiring</div><img src="images/electrical/led_controller_pulse_wiring.jpg" alt="LED controller wiring"></div>
-</div>
-</div>
-<div class="step-tags"><span class="tag tag-info">WS2811 12V</span><span class="tag tag-caution">Data Line</span></div>
+<div class="step-number">STEP 5.4</div><div class="step-title">Wire Side Panel WS2812 Addressable Strip</div>
+<div class="step-detail">Connect 24" <strong>WS2812</strong> FCOB strip to 12V power <strong>and</strong> data line to microcontroller / smileOS controller.</div>
+<div class="step-tags"><span class="tag tag-info">WS2812 12V</span><span class="tag tag-caution">Data Line</span></div>
 </div></div>
 
 <div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
 <div class="step-number">STEP 5.5</div><div class="step-title">Wire Instrument Panel LEDs</div>
-<div class="step-detail">Use pre-installed <strong>Wago lever connectors</strong>. 8x indicator bulbs + 8" COB strip. Insert stripped wires — no soldering.
-<div class="img-pair" style="margin-top:12px;">
-<div class="img-col"><div class="img-label before">Reference — Amplifier (Audio)</div><img src="images/electrical/amplifier_mounted.jpg" alt="Amplifier mounted"></div>
-<div class="img-col"><div class="img-label before">Reference — Computer &amp; USB Cables</div><img src="images/electrical/computer_usb_cables.jpg" alt="Computer USB cables"></div>
-</div>
-</div>
+<div class="step-detail">Use pre-installed <strong>Wago lever connectors</strong>. 8x indicator bulbs + 8" COB strip. Insert stripped wires — no soldering.</div>
 <div class="step-tags"><span class="tag tag-info">Wago — No Soldering</span></div>
 </div></div>
 
@@ -609,12 +594,15 @@ Cut <strong>"Cut Keyhole Slot"</strong> (x2) — <strong>reciprocating saw</stro
 
 <div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
 <div class="step-number">STEP 5.8</div><div class="step-title">Verify All LED Connections — Power-On Test</div>
-<div class="step-detail">Power on 12V PSU. Verify all LEDs illuminate: pill panels, side panel, instrument panel, chute border. Power off when confirmed.
-<div class="img-pair" style="margin-top:12px;">
-<div class="img-col"><div class="img-label before">Reference — Full Booth Interior</div><img src="images/reference/booth_interior_full.jpg" alt="Full booth interior"></div>
-</div>
-</div>
+<div class="step-detail">Power on 12V PSU. Verify all LEDs illuminate: pill panels, side panel, instrument panel, chute border. Power off when confirmed.</div>
 <div class="step-tags"><span class="tag tag-caution">Power Test</span></div>
+</div></div>
+
+<div class="step-card" onclick="toggleStep(this)"><div class="step-checkbox">&#x2713;</div><div class="step-content">
+<div class="step-number">STEP 5.9</div>
+<div class="step-title">Reinstall Ceiling Panel</div>
+<div class="step-detail">All cables routed (holo fan cord, USB, etc.). Reinstall ceiling panel with 8 screws. Verify no cables pinched.</div>
+<div class="step-tags"><span class="tag tag-tool">Screwdriver</span></div>
 </div></div>
 </div>
 
