@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Star Wars Galactic ID — On-Site Install Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg-dark:#0a0c10;--bg-card:#12151c;--bg-card-hover:#181c26;--accent-blue:#4fc3f7;--accent-red:#ef5350;--accent-amber:#ffca28;--accent-green:#66bb6a;--text-primary:#e8eaed;--text-secondary:#9aa0a6;--text-dim:#5f6368;--border:#2a2e38;--glow-blue:rgba(79,195,247,0.15);--glow-red:rgba(239,83,80,0.12)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg-dark);color:var(--text-primary);font-family:'Rajdhani',sans-serif;min-height:100vh;overflow-x:hidden}
+body::after{content:'';position:fixed;top:0;left:0;right:0;bottom:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,0,0,.03) 2px,rgba(0,0,0,.03) 4px);pointer-events:none;z-index:9999}
+.header{background:linear-gradient(180deg,#0f1218,var(--bg-dark));border-bottom:1px solid var(--border);padding:24px 40px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:44px;z-index:100;backdrop-filter:blur(12px)}
+.header-left{display:flex;align-items:center;gap:20px}
+.logo-mark{width:48px;height:48px;border:2px solid var(--accent-amber);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Orbitron',sans-serif;font-weight:900;font-size:14px;color:var(--accent-amber);box-shadow:0 0 20px rgba(255,202,40,.2)}
+.header-title h1{font-family:'Orbitron',sans-serif;font-size:22px;font-weight:700;letter-spacing:3px;text-transform:uppercase}
+.header-title .subtitle{font-size:13px;color:var(--text-secondary);letter-spacing:1.5px;text-transform:uppercase;margin-top:2px}
+.main{max-width:1200px;margin:0 auto;padding:32px 40px 100px}
+.intro{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:24px 28px;margin-bottom:32px}
+.intro h2{font-family:'Orbitron',sans-serif;font-size:16px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--accent-amber);margin-bottom:10px}
+.intro p{font-size:15px;color:var(--text-secondary);line-height:1.6}
+.step-section{margin-bottom:48px}
+.step-section-header{display:flex;align-items:center;gap:16px;margin-bottom:20px;padding-bottom:14px;border-bottom:2px solid var(--border)}
+.step-section-num{font-family:'Orbitron',sans-serif;font-size:32px;font-weight:900;color:var(--accent-amber);line-height:1;min-width:64px;text-align:center;background:rgba(255,202,40,.08);border:1px solid rgba(255,202,40,.25);border-radius:8px;padding:10px 12px}
+.step-section-title h2{font-family:'Orbitron',sans-serif;font-size:20px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--text-primary)}
+.step-section-title p{font-size:14px;color:var(--text-secondary);margin-top:4px;line-height:1.5}
+.substep{background:var(--bg-card);border:1px solid var(--border);border-left:4px solid var(--accent-blue);border-radius:8px;padding:18px 22px;margin-bottom:14px}
+.substep-title{font-family:'Rajdhani',sans-serif;font-size:17px;font-weight:600;color:var(--accent-blue);margin-bottom:8px;display:flex;align-items:center;gap:10px}
+.substep-title .num{font-family:'Orbitron',sans-serif;font-size:11px;background:rgba(79,195,247,.15);color:var(--accent-blue);padding:3px 10px;border-radius:4px;letter-spacing:1px}
+.substep-body{font-size:14px;color:var(--text-secondary);line-height:1.7}
+.substep-body strong{color:var(--accent-amber);font-weight:600}
+.substep-body ul,.substep-body ol{margin-left:22px;margin-top:8px}
+.substep-body li{margin-bottom:6px}
+.warning-box{background:var(--glow-red);border:1px solid rgba(239,83,80,.3);border-radius:8px;padding:14px 18px;margin:14px 0;display:flex;gap:12px;align-items:flex-start}
+.warning-box .icon{font-size:20px;min-width:24px;text-align:center}
+.warning-box .text{font-size:13px;color:var(--accent-red);line-height:1.5;font-weight:500}
+.info-box{background:var(--glow-blue);border:1px solid rgba(79,195,247,.25);border-radius:8px;padding:14px 18px;margin:14px 0;display:flex;gap:12px;align-items:flex-start}
+.info-box .icon{font-size:20px;min-width:24px;text-align:center}
+.info-box .text{font-size:13px;color:var(--accent-blue);line-height:1.5}
+.gate-box{background:rgba(102,187,106,.08);border:2px dashed rgba(102,187,106,.4);border-radius:8px;padding:14px 18px;margin:18px 0;display:flex;gap:12px;align-items:flex-start}
+.gate-box .icon{font-size:22px;min-width:28px;text-align:center}
+.gate-box .text{font-size:14px;color:var(--accent-green);line-height:1.5;font-weight:600}
+.img-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-top:14px}
+.img-grid .img-col{background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:6px;padding:8px}
+.img-grid .img-col img{width:100%;border-radius:4px;display:block}
+.img-grid .img-label{font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--accent-blue);margin-bottom:6px;text-align:center}
+.tag{display:inline-block;font-size:11px;font-weight:600;padding:3px 10px;border-radius:4px;text-transform:uppercase;letter-spacing:.5px;margin-right:6px;margin-top:8px}
+.tag-tool{background:rgba(79,195,247,.12);color:var(--accent-blue);border:1px solid rgba(79,195,247,.2)}
+.tag-caution{background:rgba(239,83,80,.12);color:var(--accent-red);border:1px solid rgba(239,83,80,.2)}
+.tag-info{background:rgba(102,187,106,.12);color:var(--accent-green);border:1px solid rgba(102,187,106,.2)}
+.draft-watermark{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-30deg);font-family:'Orbitron',sans-serif;font-size:120px;font-weight:900;color:rgba(255,255,255,.015);pointer-events:none;z-index:0;letter-spacing:20px;white-space:nowrap}
+@media(min-width:1200px){.substep-title{font-size:19px}.substep-body{font-size:15px}}
+
+/* site nav bar */
+.gid-site-nav{position:fixed;top:0;left:0;right:0;height:44px;background:#08090d;display:flex;align-items:center;justify-content:space-between;padding:0 24px;z-index:10000;border-bottom:1px solid rgba(79,195,247,.15);box-shadow:0 1px 12px rgba(79,195,247,.08);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif}
+.gid-site-nav .gid-nav-logo{font-family:'Orbitron',sans-serif;font-weight:700;font-size:16px;color:#4fc3f7;letter-spacing:3px;text-decoration:none;text-shadow:0 0 10px rgba(79,195,247,.4)}
+.gid-site-nav .gid-nav-links{display:flex;gap:6px;align-items:center}
+.gid-site-nav .gid-nav-links a{color:#9aa0a6;font-size:12px;font-weight:500;text-decoration:none;padding:6px 12px;border-radius:4px;letter-spacing:.3px;transition:color .2s,background .2s;white-space:nowrap}
+.gid-site-nav .gid-nav-links a:hover{color:#e8eaed;background:rgba(255,255,255,.06)}
+.gid-site-nav .gid-nav-links a.gid-nav-active{color:#4fc3f7;background:rgba(79,195,247,.1)}
+</style>
+</head>
+<body>
+<nav class="gid-site-nav">
+  <a href="index.html" class="gid-nav-logo">GID</a>
+  <div class="gid-nav-links">
+    <a href="index.html">Assembly Guide</a>
+    <a href="install-guide.html" class="gid-nav-active">Install Guide</a>
+    <a href="timeline.html">Timeline</a>
+    <a href="electrical.html">Electrical Spec</a>
+    <a href="electrical-system.html">System Diagram</a>
+    <a href="electrical-illustrated.html">Illustrated Spec</a>
+    <a href="routing.html">Routing Map</a>
+  </div>
+</nav>
+<div style="height:44px"></div>
+<div class="draft-watermark">DRAFT</div>
+<div class="header">
+<div class="header-left">
+<div class="logo-mark">GID</div>
+<div class="header-title">
+<h1>On-Site Install Guide</h1>
+<div class="subtitle">Star Wars Galactic ID &nbsp;|&nbsp; Post-Shipping Field Installation</div>
+</div>
+</div>
+</div>
+
+<div class="main">
+
+<div class="intro">
+<h2>Overview</h2>
+<p>This guide covers installation steps performed <strong style="color:var(--accent-amber)">at the customer location</strong> after the booth arrives from our facility. Certain components ship loose or detached for transit protection — this guide walks through securing them in sequence. Follow steps in order; each gate must be satisfied before proceeding.</p>
+<p style="margin-top:10px"><strong style="color:var(--accent-amber)">Packed separately in the cabinet / crate:</strong> 4 sets of long and short box <em>decorative shells</em> &amp; conduits, Holo Fan, 4 antennas, hardware bag (bolts, screws, self-tappers).</p>
+</div>
+
+<!-- STEP 1 -->
+<div class="step-section">
+<div class="step-section-header">
+<div class="step-section-num">1</div>
+<div class="step-section-title">
+<h2>Position Booth &amp; Level Legs</h2>
+<p>Move the booth to its final location and level it before attaching any external components.</p>
+</div>
+</div>
+
+<div class="substep">
+<div class="substep-title"><span class="num">1.1</span>Position Booth at Final Location</div>
+<div class="substep-body">
+Move the booth into its final operating position. Consider:
+<ul>
+<li>Power outlet access (120V)</li>
+<li>Network access for modem</li>
+<li>Ceiling clearance for the Holo Tower (adds ~18" above booth roof)</li>
+<li>Door swing clearance (both large access doors on front)</li>
+<li>Customer traffic flow and sightlines to the marquee</li>
+</ul>
+</div>
+</div>
+
+<div class="substep">
+<div class="substep-title"><span class="num">1.2</span>Lower &amp; Level Leg Feet</div>
+<div class="substep-body">
+The booth ships with its <strong>leveling feet retracted</strong> and riding on casters. At its final position:
+<ol>
+<li>Lower each of the <strong>4 leveling feet</strong> by rotating them out of the base.</li>
+<li>Check level on both axes using a spirit level on the top ceiling surface.</li>
+<li>Adjust each foot until the booth is <strong>plumb and stable</strong> — it should not rock when pushed.</li>
+<li>Confirm the booth weight is transferred from casters to feet (casters should spin freely when the booth is level).</li>
+</ol>
+</div>
+</div>
+
+<div class="gate-box">
+<div class="icon">&#x2713;</div>
+<div class="text"><strong>GATE:</strong> Do not proceed to Step 2 until the booth is in its final position and fully leveled. Moving the booth after the Holo Tower and decorative shells are installed risks damage.</div>
+</div>
+</div>
+
+<!-- STEP 2 -->
+<div class="step-section">
+<div class="step-section-header">
+<div class="step-section-num">2</div>
+<div class="step-section-title">
+<h2>Install Long &amp; Short Box Decorative Shells (4 Sets)</h2>
+<p>The 4 long/short box mounting plates ship pre-installed on the booth. The decorative shells and conduit hoses ship separately and are installed on-site.</p>
+</div>
+</div>
+
+<div class="info-box">
+<div class="icon">&#x1F4A1;</div>
+<div class="text">Each Galactic ID Photobooth has <strong>4 sets</strong> of Long and Short Boxes, connected by plastic conduit. One set above and one below each large pill light panel (2 on each side of the booth).</div>
+</div>
+
+<div class="substep">
+<div class="substep-title"><span class="num">2.1</span>Verify Mounting Plates Are In Place</div>
+<div class="substep-body">
+Before attaching shells, confirm the <strong>mounting plates</strong> are bolted to the booth (these were installed at the factory):
+<ul>
+<li><strong>Long Box Mounting Plates</strong> — above and below each cabinet door. Secured with <strong>3 × 1/4"-20 bolts</strong> per plate. Hose couplings face <em>away</em> from the cabinet door (up on top, down on bottom).</li>
+<li><strong>Short Box Mounting Plates (Top)</strong> — on the roof, one per side. Secured with <strong>4 × 1/4"-20 bolts</strong> per plate. Hose couplings face outward.</li>
+<li><strong>Short Box Mounting Plates (Bottom)</strong> — on the underside, <em>half boxes</em> to clear leveling feet and casters. Secured with <strong>2 × 1/4"-20 bolts</strong> per plate. Hose couplings face outward.</li>
+</ul>
+<div class="img-grid">
+<div class="img-col"><div class="img-label">Booth Overview — 4 Sets, Each with Long + Short Box + Conduits</div><img src="images/install-guide/boxes-overview.jpg" alt="Overview of 4 box sets on booth"></div>
+<div class="img-col"><div class="img-label">Long Box Mounting Plates (Top &amp; Bottom)</div><img src="images/install-guide/long-box-plates.jpg" alt="Long box mounting plates"></div>
+</div>
+<div class="img-grid">
+<div class="img-col"><div class="img-label">Short Box Top — 4 Rivet Nuts per Plate</div><img src="images/install-guide/short-box-top.jpg" alt="Short box top mounting"></div>
+<div class="img-col"><div class="img-label">Short Box Bottom — Half Boxes (Booth on Side)</div><img src="images/install-guide/short-box-bottom.jpg" alt="Short box bottom mounting"></div>
+</div>
+</div>
+</div>
+
+<div class="substep">
+<div class="substep-title"><span class="num">2.2</span>Attach Conduit Hoses Between Long &amp; Short Boxes</div>
+<div class="substep-body">
+Each box set has <strong>two plastic conduit hoses</strong> connecting the long box to the short box.
+<ol>
+<li>Secure each hose to the <strong>Short Box end first</strong> using one of the provided <strong>self-tapping screws</strong> and a powered driver.</li>
+<li>Bend the other end of the hose up (for upper sets) or down (for lower sets) to connect to the corresponding port in the <strong>Long Box Mounting Plate</strong>.</li>
+<li>Screw the hoses down into the Long Box couplings as well.</li>
+</ol>
+<div class="warning-box">
+<div class="icon">&#x26A0;</div>
+<div class="text"><strong>Bottom conduit hoses must be secured while the booth is on its side.</strong> If the booth is already upright and leveled (Step 1), you may need to lay it down again to access the bottom. <em>Tip:</em> if you know bottom conduits aren't attached yet, install them <strong>before</strong> doing final leveling.</div>
+</div>
+<div class="img-grid">
+<div class="img-col"><div class="img-label">Conduit Hoses — Long Box to Short Box</div><img src="images/install-guide/conduit-hoses.jpg" alt="Two conduit hoses connecting long and short box"></div>
+<div class="img-col"><div class="img-label">Self-Tapping Screw into Short Box</div><img src="images/install-guide/conduit-screws.jpg" alt="Self-tapping screw securing conduit hose"></div>
+</div>
+</div>
+</div>
+
+<div class="substep">
+<div class="substep-title"><span class="num">2.3</span>Slide &amp; Secure Decorative Shells</div>
+<div class="substep-body">
+Slide the corresponding <strong>decorative 3D-printed shell</strong> over each mounting plate/conduit assembly.
+<ol>
+<li>Orient each shell correctly (note which is for the long box vs short box, and which side is up).</li>
+<li>Slide the shell over the mounting plate until the perimeter screw holes align.</li>
+<li>Secure each shell using the <strong>3–6 perimeter screws</strong>:
+  <ul>
+    <li>Default: <strong>&#x215C;" 8-32 flat head screws</strong></li>
+    <li>If any holes are too shallow: use <strong>&#xBD;" 8-32 flat head screws</strong> instead</li>
+  </ul>
+</li>
+<li>A <strong>hidden wood screw</strong> underneath each cosmetic shell holds the corresponding conduit in place — install this screw after the shell is seated.</li>
+</ol>
+<div class="info-box">
+<div class="icon">&#x1F4A1;</div>
+<div class="text">The cosmetic shells for the <strong>bottom short boxes</strong> can be installed with the unit upright. Use a <strong>powered screwdriver with an extension bit</strong> to reach the screws.</div>
+</div>
+<div class="img-grid">
+<div class="img-col"><div class="img-label">Slide Shell Over Mounting Plate</div><img src="images/install-guide/shell-install.jpg" alt="Sliding cosmetic shell over mounting plate"></div>
+<div class="img-col"><div class="img-label">Perimeter Screws (3–6 per Shell)</div><img src="images/install-guide/shell-perimeter-screws.jpg" alt="Perimeter screws securing shell"></div>
+</div>
+<div class="img-grid">
+<div class="img-col"><div class="img-label">Side Screws — Shell Seam</div><img src="images/install-guide/shell-side-screws.jpg" alt="Side screws along shell seam"></div>
+<div class="img-col"><div class="img-label">Bottom Shells — Install from Below (Booth Upright)</div><img src="images/install-guide/bottom-shells.jpg" alt="Bottom shell install while booth is upright"></div>
+</div>
+</div>
+</div>
+
+<div class="gate-box">
+<div class="icon">&#x2713;</div>
+<div class="text"><strong>GATE:</strong> All 4 sets of long and short box shells are installed and secure. All conduit hoses are attached at both ends and captured by hidden wood screws.</div>
+</div>
+</div>
+
+<!-- STEP 3 -->
+<div class="step-section">
+<div class="step-section-header">
+<div class="step-section-num">3</div>
+<div class="step-section-title">
+<h2>Ceiling Work — Remove Ceiling Panel, Install Holo Fan &amp; Antennas</h2>
+<p>The Holo Tower ships with the Holo Fan detached, and antennas ship separately to avoid shipping damage. The ceiling panel must be temporarily removed to route cables.</p>
+</div>
+</div>
+
+<div class="substep">
+<div class="substep-title"><span class="num">3.1</span>Remove Ceiling Panel</div>
+<div class="substep-body">
+Open the booth and remove the <strong>ceiling panel</strong> by unscrewing its 8 fasteners. This exposes the ceiling cavity for cable routing.<br><br>
+<em>Note: The ceiling panel was last reinstalled at the factory (Phase 5 Step 5.9). You may find USB and holo fan power cables already routed through the ceiling cavity from factory work.</em>
+</div>
+</div>
+
+<div class="substep">
+<div class="substep-title"><span class="num">3.2</span>Install the Holo Fan</div>
+<div class="substep-body">
+The <strong>Holo Fan</strong> ships separately from the booth. The Holo Tower's outer shell, base flange, fan mount and tubes were pre-installed at the factory — your job on-site is to install the fan itself inside the already-mounted tower.
+<ol>
+<li>Locate the fan and verify the <strong>right-angle DC extension cord</strong> is pre-routed up through the tower's mounting stem (factory-installed, strain-relieved at the Spacer Block). If not, run it up through now.</li>
+<li><strong>Align the central hub of the Holo Fan</strong> with the large circular hole in the Front Shell of the tower.</li>
+<li>Pass the extension cord through the Front Shell and plug it into the fan via the <strong>JST connector</strong>. The fan is powered by the dedicated 12V line from the booth — <strong>the fan will begin spinning automatically once power is applied</strong> in Step 3.4.</li>
+<li>Lift the fan (and its attached Front Shell, if not yet secured) and align the fan's mounting slot with the cleat on the Fan Mount. Slide down together so the fan locks onto the cleat.</li>
+<li>Attach the Front Shell to the Shell Base with the <strong>2 × &#xBD;" 8-32 screws</strong> at the bottom of the shell.</li>
+<li>Re-attach the Back Shell using the <strong>8 × 8-32 screws</strong>.</li>
+</ol>
+<div class="img-grid">
+<div class="img-col"><div class="img-label">Extension Cord Up Through Mounting Stem</div><img src="images/install-guide/extension-cord-routing.jpg" alt="Extension cord routed up through mounting stem"></div>
+<div class="img-col"><div class="img-label">Align Fan Hub with Front Shell</div><img src="images/install-guide/fan-hub-alignment.jpg" alt="Fan hub aligned with front shell"></div>
+</div>
+<div class="img-grid">
+<div class="img-col"><div class="img-label">Fan &amp; Front Shell Together on Cleat</div><img src="images/install-guide/fan-front-shell.jpg" alt="Fan and front shell mounted to cleat"></div>
+<div class="img-col"><div class="img-label">Attach Front Shell — 2 × &#xBD;" 8-32 Screws</div><img src="images/install-guide/front-shell-attach.jpg" alt="Front shell attached with screws"></div>
+</div>
+<div class="img-grid">
+<div class="img-col"><div class="img-label">Re-attach Back Shell — 8 × 8-32 Screws</div><img src="images/install-guide/back-shell-reattach.jpg" alt="Back shell re-attached"></div>
+</div>
+</div>
+</div>
+
+<div class="substep">
+<div class="substep-title"><span class="num">3.3</span>Mount Holo Tower Base to Booth Roof</div>
+<div class="substep-body">
+<em>(Skip this substep if the factory already mounted the Holo Tower to the booth roof — inspect the roof for the tower's base flange bolted through the 6 rivet nuts.)</em>
+<ol>
+<li>Route the DC extension cord <strong>down out the base</strong> of the Holo Tower and into the <strong>center hole in the top of the Photobooth</strong>.</li>
+<li>Run the cord through the framing under the ceiling panel and down to the <strong>right side cabinet</strong>, where it will plug into the 12V power supply.</li>
+<li><strong>Slide the Holo Tower Assembly onto the roof</strong> of the booth and align the 6 holes around the perimeter of the base flange with the 6 rivet nuts in the top of the booth.</li>
+<li>Secure with <strong>4–6 × 1/4"-20 bolts</strong>. The 6th hole directly under the Holo Fan Shield is difficult to reach when installed and is not necessary for a secure attachment — <em>omit if necessary</em>.</li>
+</ol>
+<div class="img-grid">
+<div class="img-col"><div class="img-label">Cord Routing Through Photobooth Ceiling</div><img src="images/install-guide/cord-routing-photobooth.jpg" alt="DC cord routed through photobooth ceiling cavity"></div>
+<div class="img-col"><div class="img-label">Base Flange — 6 Rivet Nut Alignment</div><img src="images/install-guide/tower-rivet-alignment.jpg" alt="Base flange aligned with 6 rivet nuts on roof"></div>
+</div>
+<div class="img-grid">
+<div class="img-col"><div class="img-label">Holo Tower Installed on Booth</div><img src="images/install-guide/tower-installed.jpg" alt="Holo Tower installed on booth roof"></div>
+</div>
+</div>
+</div>
+
+<div class="substep">
+<div class="substep-title"><span class="num">3.4</span>Install Antennas (x4) &amp; Route to Modem / Payment Device</div>
+<div class="substep-body">
+The <strong>4 antennas</strong> ship separately inside the cabinet or in separate packaging. Install and connect them to the modem and payment device.
+<ol>
+<li>Locate the <strong>4 antenna holes</strong> drilled in the booth roof per the Roof Template (2 original + 2 offset .551" holes).</li>
+<li>Thread each antenna's base through its corresponding hole from the outside, and secure with its locking nut from the inside.</li>
+<li>Route the 4 antenna cables through the ceiling cavity:
+  <ul>
+    <li><strong>2 antenna cables → Modem</strong> (mounted between the speakers on the modem plate). Connect to the modem's SMA connectors.</li>
+    <li><strong>2 antenna cables → Payment Device</strong> (ePort / eVend or equivalent). Connect to the payment device's antenna ports.</li>
+  </ul>
+</li>
+<li>Verify LAN and power are reconnected to the modem and payment device.</li>
+</ol>
+<div class="warning-box">
+<div class="icon">&#x26A0;</div>
+<div class="text"><strong>Do not over-tighten antenna locking nuts.</strong> Hand-tight plus a quarter turn with a wrench is sufficient — over-tightening can strip the thread or crack the antenna base.</div>
+</div>
+</div>
+</div>
+
+<div class="substep">
+<div class="substep-title"><span class="num">3.5</span>Reinstall Ceiling Panel</div>
+<div class="substep-body">
+Once all cables are routed and verified, reinstall the ceiling panel with its 8 screws. Verify no cables are pinched by the panel or its framing.
+</div>
+</div>
+
+<div class="gate-box">
+<div class="icon">&#x2713;</div>
+<div class="text"><strong>GATE:</strong> Holo Fan spins up automatically when powered; all 4 antennas connected; modem and payment device online; ceiling panel reinstalled with no pinched cables.</div>
+</div>
+</div>
+
+<!-- STEP 4 -->
+<div class="step-section">
+<div class="step-section-header">
+<div class="step-section-num">4</div>
+<div class="step-section-title">
+<h2>Verify All Lighting Components</h2>
+<p>Power on the booth and confirm every LED / illuminated element functions as expected. Compare against the reference visuals below.</p>
+</div>
+</div>
+
+<div class="substep">
+<div class="substep-title"><span class="num">4.1</span>Power-On Sequence</div>
+<div class="substep-body">
+<ol>
+<li>Plug the booth into its 120V outlet.</li>
+<li>Turn on the primary power switch.</li>
+<li>Wait ~30 seconds for PSU 1, PSU 2, controllers (LC 1 and LC 2), modem, and computer to come up.</li>
+<li>Observe the boot sequence — LEDs should illuminate in their default/startup state.</li>
+</ol>
+</div>
+</div>
+
+<div class="substep">
+<div class="substep-title"><span class="num">4.2</span>Visual Inspection Checklist</div>
+<div class="substep-body">
+Walk around the booth and confirm each lighting element is functioning. Reference the hero image below for expected appearance.
+<div class="img-grid" style="grid-template-columns:1fr">
+<div class="img-col"><div class="img-label">Finished Booth — All Lighting Active</div><img src="images/install-guide/tower-installed.jpg" alt="Finished booth with all lighting active"></div>
+</div>
+<table style="width:100%;margin-top:18px;border-collapse:collapse;font-size:14px">
+<thead>
+<tr style="border-bottom:1px solid var(--border)">
+<th style="text-align:left;padding:10px 8px;color:var(--accent-amber);font-family:'Orbitron',sans-serif;font-size:12px;letter-spacing:1px;text-transform:uppercase">Element</th>
+<th style="text-align:left;padding:10px 8px;color:var(--accent-amber);font-family:'Orbitron',sans-serif;font-size:12px;letter-spacing:1px;text-transform:uppercase">Expected Behavior</th>
+<th style="text-align:left;padding:10px 8px;color:var(--accent-amber);font-family:'Orbitron',sans-serif;font-size:12px;letter-spacing:1px;text-transform:uppercase">If Not Working</th>
+</tr>
+</thead>
+<tbody>
+<tr style="border-bottom:1px solid var(--border)">
+<td style="padding:10px 8px"><strong style="color:var(--text-primary)">Marquee ("Star Wars Galactic ID")</strong></td>
+<td style="padding:10px 8px">Backlit text glows steadily white</td>
+<td style="padding:10px 8px;color:var(--text-dim)">Check marquee power &amp; existing booth LED circuit</td>
+</tr>
+<tr style="border-bottom:1px solid var(--border)">
+<td style="padding:10px 8px"><strong style="color:var(--text-primary)">Pill Light Panels (x2 doors)</strong></td>
+<td style="padding:10px 8px">Bright white glow through all pill lenses (~176W total)</td>
+<td style="padding:10px 8px;color:var(--text-dim)">Check PSU 1 (left door) and PSU 2 (right door) load, COB strip leads</td>
+</tr>
+<tr style="border-bottom:1px solid var(--border)">
+<td style="padding:10px 8px"><strong style="color:var(--text-primary)">Side Panel — Red Pills (Bottom)</strong></td>
+<td style="padding:10px 8px">Red glow through 5 pill lenses on the side panel</td>
+<td style="padding:10px 8px;color:var(--text-dim)">Check 12V COB strip wiring via 3/4" power injection holes</td>
+</tr>
+<tr style="border-bottom:1px solid var(--border)">
+<td style="padding:10px 8px"><strong style="color:var(--text-primary)">Side Panel — Card Display (Top)</strong></td>
+<td style="padding:10px 8px">WS2812 addressable strip runs animations behind 6 card windows</td>
+<td style="padding:10px 8px;color:var(--text-dim)">Check LC 2 data line &amp; power to WS2812; verify strip voltage matches PSU</td>
+</tr>
+<tr style="border-bottom:1px solid var(--border)">
+<td style="padding:10px 8px"><strong style="color:var(--text-primary)">Instrument Panel</strong></td>
+<td style="padding:10px 8px">8 indicator bulbs illuminate + 8" COB strip backlight</td>
+<td style="padding:10px 8px;color:var(--text-dim)">Check Wago lever connectors — push levers down and reseat wires</td>
+</tr>
+<tr style="border-bottom:1px solid var(--border)">
+<td style="padding:10px 8px"><strong style="color:var(--text-primary)">Chute Border (9 LED Indicators)</strong></td>
+<td style="padding:10px 8px">9 indicator LEDs above the printer chute, dimmable via LC 2 PWM</td>
+<td style="padding:10px 8px;color:var(--text-dim)">Check LC 2 PWM output assignments &amp; chute door LED wiring</td>
+</tr>
+<tr style="border-bottom:1px solid var(--border)">
+<td style="padding:10px 8px"><strong style="color:var(--text-primary)">Holo Fan</strong></td>
+<td style="padding:10px 8px">Fan spins immediately on power-up; blades create the holo projection effect</td>
+<td style="padding:10px 8px;color:var(--text-dim)">Check JST connector at fan; verify 12V DC extension cord seated at PSU</td>
+</tr>
+<tr style="border-bottom:1px solid var(--border)">
+<td style="padding:10px 8px"><strong style="color:var(--text-primary)">Ring Light (Around Prints Here chute)</strong></td>
+<td style="padding:10px 8px">Steady blue halo (existing booth feature, unchanged by GID conversion)</td>
+<td style="padding:10px 8px;color:var(--text-dim)">Check original ring light circuit — not part of GID conversion</td>
+</tr>
+<tr>
+<td style="padding:10px 8px"><strong style="color:var(--text-primary)">Camera Indicator Light</strong></td>
+<td style="padding:10px 8px">Illuminates when camera is active during shoots</td>
+<td style="padding:10px 8px;color:var(--text-dim)">Check indicator light cover installed correctly above camera housing</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div class="substep">
+<div class="substep-title"><span class="num">4.3</span>15-Minute Burn-In</div>
+<div class="substep-body">
+Leave the booth powered on for <strong>at least 15 minutes</strong> with all LEDs active. Monitor for:
+<ul>
+<li><strong>Flicker or dimming</strong> — suggests undersized PSU or loose connection</li>
+<li><strong>Overheating</strong> — touch-test PSU housings and COB strips (warm is OK, hot is not)</li>
+<li><strong>Holo fan noise</strong> — should be a steady hum, no grinding or wobble</li>
+<li><strong>Camera function</strong> — take a test photo; confirm no lens occlusion from the camera housing cover</li>
+</ul>
+</div>
+</div>
+
+<div class="gate-box">
+<div class="icon">&#x2713;</div>
+<div class="text"><strong>GATE:</strong> All lighting elements from the checklist are functioning; 15-minute burn-in passed with no flicker/overheat; camera test photo taken successfully. <strong>Installation complete.</strong></div>
+</div>
+</div>
+
+</div>
+</body>
+</html>
